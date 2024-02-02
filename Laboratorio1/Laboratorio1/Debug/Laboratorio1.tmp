@@ -1,19 +1,19 @@
 <ASSEMBLER_INFO>
  <VERSION>2.2.8</VERSION>
  <DEVICE>"ATmega328P"</DEVICE>
- <WORKING_DIR>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Laboratorio 1\Laboratorio\Laboratorio1\Laboratorio1\Debug</WORKING_DIR>
+ <WORKING_DIR>C:\Users\jaidy\OneDrive\Documentos\GitHub\Microprocesadores\Laboratorio1\Laboratorio1\Debug</WORKING_DIR>
  <INCLUDE_PATH>
   <DIR>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc</DIR>
   <DIR>C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avrassembler\Include</DIR>
   <DIR></DIR>
  </INCLUDE_PATH>
- <SOURCE_FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Laboratorio 1\Laboratorio\Laboratorio1\Laboratorio1\main.asm</SOURCE_FILE>
+ <SOURCE_FILE>C:\Users\jaidy\OneDrive\Documentos\GitHub\Microprocesadores\Laboratorio1\Laboratorio1\main.asm</SOURCE_FILE>
  <INCLUDED_FILES>
   <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328Pdef.inc</FILE>
   <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\M328PDEF.inc</FILE>
  </INCLUDED_FILES>
  <OBJECT_FILES>
-  <FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Laboratorio 1\Laboratorio\Laboratorio1\Laboratorio1\Debug\Laboratorio1.obj</FILE>
+  <FILE>C:\Users\jaidy\OneDrive\Documentos\GitHub\Microprocesadores\Laboratorio1\Laboratorio1\Debug\Laboratorio1.obj</FILE>
  </OBJECT_FILES>
  <HEX_FILES>
   <FILE>Laboratorio1.hex</FILE>
@@ -23,19 +23,19 @@
   <FILE>Laboratorio1.lss</FILE>
  </OUTPUT_FILES>
  <LABELS>
-  <SETUP><FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Laboratorio 1\Laboratorio\Laboratorio1\Laboratorio1\main.asm</FILE><LINE>29</LINE></SETUP>
-  <LOOP><FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Laboratorio 1\Laboratorio\Laboratorio1\Laboratorio1\main.asm</FILE><LINE>46</LINE></LOOP>
-  <AUMENTAR_1><FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Laboratorio 1\Laboratorio\Laboratorio1\Laboratorio1\main.asm</FILE><LINE>60</LINE></AUMENTAR_1>
-  <DECREMENTAR_1><FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Laboratorio 1\Laboratorio\Laboratorio1\Laboratorio1\main.asm</FILE><LINE>76</LINE></DECREMENTAR_1>
-  <AUMENTAR_2><FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Laboratorio 1\Laboratorio\Laboratorio1\Laboratorio1\main.asm</FILE><LINE>92</LINE></AUMENTAR_2>
-  <DECREMENTAR_2><FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Laboratorio 1\Laboratorio\Laboratorio1\Laboratorio1\main.asm</FILE><LINE>108</LINE></DECREMENTAR_2>
-  <RESULTADO><FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Laboratorio 1\Laboratorio\Laboratorio1\Laboratorio1\main.asm</FILE><LINE>125</LINE></RESULTADO>
-  <RETARDO><FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Laboratorio 1\Laboratorio\Laboratorio1\Laboratorio1\main.asm</FILE><LINE>136</LINE></RETARDO>
-  <CONFIRMAR_A><FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Laboratorio 1\Laboratorio\Laboratorio1\Laboratorio1\main.asm</FILE><LINE>64</LINE></CONFIRMAR_A>
-  <CONFIRMAR_B><FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Laboratorio 1\Laboratorio\Laboratorio1\Laboratorio1\main.asm</FILE><LINE>80</LINE></CONFIRMAR_B>
-  <CONFIRMAR_C><FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Laboratorio 1\Laboratorio\Laboratorio1\Laboratorio1\main.asm</FILE><LINE>96</LINE></CONFIRMAR_C>
-  <CONFIRMAR_D><FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Laboratorio 1\Laboratorio\Laboratorio1\Laboratorio1\main.asm</FILE><LINE>112</LINE></CONFIRMAR_D>
-  <INCR17><FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Laboratorio 1\Laboratorio\Laboratorio1\Laboratorio1\main.asm</FILE><LINE>139</LINE></INCR17>
-  <INCR16><FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Laboratorio 1\Laboratorio\Laboratorio1\Laboratorio1\main.asm</FILE><LINE>143</LINE></INCR16>
+  <SETUP><FILE>C:\Users\jaidy\OneDrive\Documentos\GitHub\Microprocesadores\Laboratorio1\Laboratorio1\main.asm</FILE><LINE>29</LINE></SETUP>
+  <LOOP><FILE>C:\Users\jaidy\OneDrive\Documentos\GitHub\Microprocesadores\Laboratorio1\Laboratorio1\main.asm</FILE><LINE>46</LINE></LOOP>
+  <AUMENTAR_1><FILE>C:\Users\jaidy\OneDrive\Documentos\GitHub\Microprocesadores\Laboratorio1\Laboratorio1\main.asm</FILE><LINE>60</LINE></AUMENTAR_1>
+  <DECREMENTAR_1><FILE>C:\Users\jaidy\OneDrive\Documentos\GitHub\Microprocesadores\Laboratorio1\Laboratorio1\main.asm</FILE><LINE>76</LINE></DECREMENTAR_1>
+  <AUMENTAR_2><FILE>C:\Users\jaidy\OneDrive\Documentos\GitHub\Microprocesadores\Laboratorio1\Laboratorio1\main.asm</FILE><LINE>92</LINE></AUMENTAR_2>
+  <DECREMENTAR_2><FILE>C:\Users\jaidy\OneDrive\Documentos\GitHub\Microprocesadores\Laboratorio1\Laboratorio1\main.asm</FILE><LINE>108</LINE></DECREMENTAR_2>
+  <RESULTADO><FILE>C:\Users\jaidy\OneDrive\Documentos\GitHub\Microprocesadores\Laboratorio1\Laboratorio1\main.asm</FILE><LINE>125</LINE></RESULTADO>
+  <RETARDO><FILE>C:\Users\jaidy\OneDrive\Documentos\GitHub\Microprocesadores\Laboratorio1\Laboratorio1\main.asm</FILE><LINE>136</LINE></RETARDO>
+  <CONFIRMAR_A><FILE>C:\Users\jaidy\OneDrive\Documentos\GitHub\Microprocesadores\Laboratorio1\Laboratorio1\main.asm</FILE><LINE>64</LINE></CONFIRMAR_A>
+  <CONFIRMAR_B><FILE>C:\Users\jaidy\OneDrive\Documentos\GitHub\Microprocesadores\Laboratorio1\Laboratorio1\main.asm</FILE><LINE>80</LINE></CONFIRMAR_B>
+  <CONFIRMAR_C><FILE>C:\Users\jaidy\OneDrive\Documentos\GitHub\Microprocesadores\Laboratorio1\Laboratorio1\main.asm</FILE><LINE>96</LINE></CONFIRMAR_C>
+  <CONFIRMAR_D><FILE>C:\Users\jaidy\OneDrive\Documentos\GitHub\Microprocesadores\Laboratorio1\Laboratorio1\main.asm</FILE><LINE>112</LINE></CONFIRMAR_D>
+  <INCR17><FILE>C:\Users\jaidy\OneDrive\Documentos\GitHub\Microprocesadores\Laboratorio1\Laboratorio1\main.asm</FILE><LINE>139</LINE></INCR17>
+  <INCR16><FILE>C:\Users\jaidy\OneDrive\Documentos\GitHub\Microprocesadores\Laboratorio1\Laboratorio1\main.asm</FILE><LINE>143</LINE></INCR16>
  </LABELS>
 </ASSEMBLER_INFO>

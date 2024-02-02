@@ -1,10 +1,10 @@
 
-AVRASM ver. 2.2.8  C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Laboratorio 1\Laboratorio\Laboratorio1\Laboratorio1\main.asm Wed Jan 31 21:47:28 2024
+AVRASM ver. 2.2.8  C:\Users\jaidy\OneDrive\Documentos\GitHub\Microprocesadores\Laboratorio1\Laboratorio1\main.asm Thu Feb 01 21:09:18 2024
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328Pdef.inc'
-C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Laboratorio 1\Laboratorio\Laboratorio1\Laboratorio1\main.asm(14): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\M328PDEF.inc'
+C:\Users\jaidy\OneDrive\Documentos\GitHub\Microprocesadores\Laboratorio1\Laboratorio1\main.asm(14): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\M328PDEF.inc'
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328Pdef.inc'
-C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Laboratorio 1\Laboratorio\Laboratorio1\Laboratorio1\main.asm(14): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\M328PDEF.inc'
+C:\Users\jaidy\OneDrive\Documentos\GitHub\Microprocesadores\Laboratorio1\Laboratorio1\main.asm(14): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\M328PDEF.inc'
                                  
                                  ;*******************************************************************************
                                  
@@ -1058,10 +1058,10 @@ C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Laborator
                                  ;Configuracion
                                  ;*******************************************************************************
                                  SETUP:
-000004 e800                      	LDI		R16, (1 << CLKPCE)
-000005 9300 0061                 	STS		CLKPR, R16
-000007 e004                      	LDI		R16, 0b0000_0100
-000008 9300 0061                 	STS		CLKPR, R16
+000004 e800                      	LDI		R16, (1 << CLKPCE)	;CONFIGURACION DEL PRESCALER
+000005 9300 0061                 	STS		CLKPR, R16			;HABILITA EL PRESCALER
+000007 e004                      	LDI		R16, 0b0000_0100	
+000008 9300 0061                 	STS		CLKPR, R16			;SELECCIONAL EL PRESCALER DE 1MHz
                                  	
 00000a e000                      	LDI		R16, 0b0000_0000	;
 00000b b904                      	OUT		DDRB, R16			;COLOCO EL PUERTO B COMO ENTRADA
@@ -1071,17 +1071,17 @@ C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Laborator
 00000f b90a                      	OUT		DDRD, R16			;COLOCO EL PUERTO D COMO SALIDA
 000010 e020                      	LDI		R18, 0				;R18 NUMERO 1
 000011 e030                      	LDI		R19, 0				;R19 NUMERO 2
-000012 e040                      	LDI		R20, 0				;R18 NUMERO 1
-000013 e060                      	LDI		R22, 0				;R18 NUMERO 1
+000012 e040                      	LDI		R20, 0				;REGISTRO AUXILIAR PARA EL NUMERO 1
+000013 e060                      	LDI		R22, 0				;REGISTRO AUXILIAR PARA EL NUMERO 2
                                  
                                  LOOP:
-000014 940e 001f                 	CALL	AUMENTAR_1
-000016 940e 002b                 	CALL	DECREMENTAR_1
+000014 940e 001f                 	CALL	AUMENTAR_1			;LLAMA A LA SUBRUTINA QUE INCREMENTA EL NUMERO 1
+000016 940e 002b                 	CALL	DECREMENTAR_1		;LLAMA A LA SUBRUTINA QUE DECREMENTA EL NUMERO 1
                                  
-000018 940e 0037                 	CALL	AUMENTAR_2
-00001a 940e 0043                 	CALL	DECREMENTAR_2
+000018 940e 0037                 	CALL	AUMENTAR_2			;LLAMA A LA SUBRUTINA QUE INCREMENTA EL NUMERO 2
+00001a 940e 0043                 	CALL	DECREMENTAR_2		;LLAMA A LA SUBRUTINA QUE DECREMENTA EL NUMERO 2
                                  
-00001c 940e 004f                 	CALL	RESULTADO
+00001c 940e 004f                 	CALL	RESULTADO			;LLAMA A LA SUBRUTINA QUE MUESTRA EL RESULTADO 
 00001e cff5                      	RJMP	LOOP 
                                  
                                  ;*******************************************************************************
@@ -1089,64 +1089,64 @@ C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Laborator
                                  ;*******************************************************************************
                                  ;INCREMENTAR NUMERO 1
                                  AUMENTAR_1:
-00001f 9b18                      	SBIS	PINB, PB0			;VERIFICA SI EL BIT 0 DEL PUERTO B ES IGUAL A 1 (PIN DEL ARUINO D8)
+00001f 9b18                      	SBIS	PINB, PB0			;VERIFICA SI EL BIT 0 DEL PUERTO B ES IGUAL A 1
 000020 9508                      	RET							;SI EL BIT 0 ES IGUAL A 0 
 000021 940e 0055                 	CALL	RETARDO				;SI EL BIT 0 ES IGUAL A 1
                                  CONFIRMAR_A:
-000023 9918                      	SBIC	PINB, PB0			;VERIFICA SI EL BIT 0 DEL PUERTO B ES IGUAL A 0 (PIN DEL ARUINO D8)
+000023 9918                      	SBIC	PINB, PB0			;VERIFICA SI EL BIT 0 DEL PUERTO B ES IGUAL A 0
 000024 cffe                      	RJMP	CONFIRMAR_A			;SI EL BIT 0 ES IGUAL A 1
-000025 9523                      	INC		R18					;SUMA
-000026 01a9                      	MOVW	R20, R18
-000027 9542                      	SWAP	R20
-000028 0f43                      	ADD		R20, R19
+000025 9523                      	INC		R18					;INCREMENTA EL NUMERO 1
+000026 01a9                      	MOVW	R20, R18			;COPIA EL NUMERO 1 PARA CAMBIAR LOS NIBLES
+000027 9542                      	SWAP	R20					;CAMBIA LOS NIBLES (MASCARA)
+000028 0f43                      	ADD		R20, R19			;SUMA EL NUMERO 1 Y NUMERO 2 PARA MOSTRARLO EN UN SOLO PUERTO
 000029 b94b                      	OUT		PORTD,R20			;MUESTRA EN EL PUERTO D
 00002a 9508                      	RET
                                  
                                  ;*******************************************************************************
                                  ;DECREMENTAR NUMERO 1
                                  DECREMENTAR_1:
-00002b 9b19                      	SBIS	PINB, PB1			;VERIFICA SI EL BIT 1 DEL PUERTO B ES IGUAL A 1 (PIN DEL ARUINO D9)
-00002c 9508                      	RET							;SI EL BIT 0 ES IGUAL A 0 
-00002d 940e 0055                 	CALL	RETARDO				;SI EL BIT 0 ES IGUAL A 1
+00002b 9b19                      	SBIS	PINB, PB1			;VERIFICA SI EL BIT 1 DEL PUERTO B ES IGUAL A 1
+00002c 9508                      	RET							;SI EL BIT 1 ES IGUAL A 0 
+00002d 940e 0055                 	CALL	RETARDO				;SI EL BIT 1 ES IGUAL A 1
                                  CONFIRMAR_B:
-00002f 9919                      	SBIC	PINB, PB1			;VERIFICA SI EL BIT 1 DEL PUERTO B ES IGUAL A 0 (PIN DEL ARUINO D9)
-000030 cffe                      	RJMP	CONFIRMAR_B			;SI EL BIT 0 ES IGUAL A 1
-000031 952a                      	DEC		R18					;RESTA
-000032 01a9                      	MOVW	R20, R18 
-000033 9542                      	SWAP	R20
-000034 0f43                      	ADD		R20, R19
+00002f 9919                      	SBIC	PINB, PB1			;VERIFICA SI EL BIT 1 DEL PUERTO B ES IGUAL A 0
+000030 cffe                      	RJMP	CONFIRMAR_B			;SI EL BIT 1 ES IGUAL A 1
+000031 952a                      	DEC		R18					;DECREMENTA EL NUMERO 1
+000032 01a9                      	MOVW	R20, R18			;COPIA EL NUMERO 1 PARA CAMBIAR LOS NIBLES
+000033 9542                      	SWAP	R20					;CAMBIA LOS NIBLES (MASCARA)
+000034 0f43                      	ADD		R20, R19			;SUMA EL NUMERO 1 Y NUMERO 2 PARA MOSTRARLO EN UN SOLO PUERTO
 000035 b94b                      	OUT		PORTD,R20			;MUESTRA EN EL PUERTO D
 000036 9508                      	RET
                                  
                                  ;*******************************************************************************
                                  ;INCREMENTAR NUMERO 2
                                  AUMENTAR_2:
-000037 9b1a                      	SBIS	PINB, PB2			;VERIFICA SI EL BIT 0 DEL PUERTO B ES IGUAL A 1 (PIN DEL ARUINO D8)
-000038 9508                      	RET							;SI EL BIT 0 ES IGUAL A 0 
-000039 940e 0055                 	CALL	RETARDO				;SI EL BIT 0 ES IGUAL A 1
+000037 9b1a                      	SBIS	PINB, PB2			;VERIFICA SI EL BIT 0 DEL PUERTO B ES IGUAL A 1 
+000038 9508                      	RET							;SI EL BIT 2 ES IGUAL A 0 
+000039 940e 0055                 	CALL	RETARDO				;SI EL BIT 2 ES IGUAL A 1
                                  CONFIRMAR_C:
-00003b 991a                      	SBIC	PINB, PB2			;VERIFICA SI EL BIT 0 DEL PUERTO B ES IGUAL A 0 (PIN DEL ARUINO D8)
-00003c cffe                      	RJMP	CONFIRMAR_C			;SI EL BIT 0 ES IGUAL A 1
-00003d 9533                      	INC		R19					;SUMA
-00003e 01a9                      	MOVW	R20, R18 
-00003f 9542                      	SWAP	R20
-000040 0f43                      	ADD		R20, R19
+00003b 991a                      	SBIC	PINB, PB2			;VERIFICA SI EL BIT 0 DEL PUERTO B ES IGUAL A 0 
+00003c cffe                      	RJMP	CONFIRMAR_C			;SI EL BIT 2 ES IGUAL A 1
+00003d 9533                      	INC		R19					;INCREMENTA EL NUMERO 2
+00003e 01a9                      	MOVW	R20, R18			;COPIA EL NUMERO 1 PARA CAMBIAR LOS NIBLES
+00003f 9542                      	SWAP	R20					;CAMBIA LOS NIBLES (MASCARA)
+000040 0f43                      	ADD		R20, R19			;SUMA EL NUMERO 1 Y NUMERO 2 PARA MOSTRARLO EN UN SOLO PUERTO
 000041 b94b                      	OUT		PORTD,R20			;MUESTRA EN EL PUERTO D
 000042 9508                      	RET
                                  
                                  ;*******************************************************************************
                                  ;DECREMENTAR NUMERO 2
                                  DECREMENTAR_2:
-000043 9b1b                      	SBIS	PINB, PB3			;VERIFICA SI EL BIT 1 DEL PUERTO B ES IGUAL A 1 (PIN DEL ARUINO D9)
-000044 9508                      	RET							;SI EL BIT 0 ES IGUAL A 0 
-000045 940e 0055                 	CALL	RETARDO				;SI EL BIT 0 ES IGUAL A 1
+000043 9b1b                      	SBIS	PINB, PB3			;VERIFICA SI EL BIT 1 DEL PUERTO B ES IGUAL A 1 
+000044 9508                      	RET							;SI EL BIT 3 ES IGUAL A 0 
+000045 940e 0055                 	CALL	RETARDO				;SI EL BIT 3 ES IGUAL A 1
                                  CONFIRMAR_D:
-000047 991b                      	SBIC	PINB, PB3			;VERIFICA SI EL BIT 1 DEL PUERTO B ES IGUAL A 0 (PIN DEL ARUINO D9)
-000048 cffe                      	RJMP	CONFIRMAR_D			;SI EL BIT 0 ES IGUAL A 1
-000049 953a                      	DEC		R19					;RESTA
-00004a 01a9                      	MOVW	R20, R18 
-00004b 9542                      	SWAP	R20
-00004c 0f43                      	ADD		R20, R19
+000047 991b                      	SBIC	PINB, PB3			;VERIFICA SI EL BIT 1 DEL PUERTO B ES IGUAL A 0 
+000048 cffe                      	RJMP	CONFIRMAR_D			;SI EL BIT 3 ES IGUAL A 1
+000049 953a                      	DEC		R19					;DECREMENTA EL NUMERO 2
+00004a 01a9                      	MOVW	R20, R18			;COPIA EL NUMERO 1 PARA CAMBIAR LOS NIBLES
+00004b 9542                      	SWAP	R20					;CAMBIA LOS NIBLES (MASCARA)
+00004c 0f43                      	ADD		R20, R19			;SUMA EL NUMERO 1 Y NUMERO 2 PARA MOSTRARLO EN UN SOLO PUERTO
 00004d b94b                      	OUT		PORTD,R20			;MUESTRA EN EL PUERTO D
 00004e 9508                      	RET
                                  
@@ -1154,27 +1154,27 @@ C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Laborator
                                  ;*******************************************************************************
                                  ;RESULTADO
                                  RESULTADO:
-00004f 9b1c                      	SBIS	PINB, PB4			;VERIFICA SI EL BIT 0 DEL PUERTO B ES IGUAL A 1 (PIN DEL ARUINO D8)
-000050 9508                      	RET	
-000051 01b9                      	MOVW	R22, R18
-000052 0f63                      	ADD		R22, R19			
-000053 b968                      	OUT		PORTC, R22
+00004f 9b1c                      	SBIS	PINB, PB4			;VERIFICA SI EL BIT 4 DEL PUERTO B ES IGUAL A 1
+000050 9508                      	RET							;SI EL BIT 4 ES IGUAL A 0
+000051 01b9                      	MOVW	R22, R18			;COPIA EL VALOR DEL NUMERO 1
+000052 0f63                      	ADD		R22, R19			;SUMA EL VALOR DEL NUMERO 1 CON EL NUMERO 2
+000053 b968                      	OUT		PORTC, R22			;MUESTRA EL RESULTADO EN EL PUERTO C (EL BIT 4 ES EL DESBORDAMIENTO CARRY)
 000054 9508                      	RET
                                  
                                  
                                  ;*******************************************************************************
                                  ;RETARDOS
                                  RETARDO:
-000055 e010                      	LDI		R17,0
+000055 e010                      	LDI		R17,0				
 000056 e000                      	LDI		R16,0
                                  INCR17:
-000057 9513                      	INC		R17
-000058 3b12                      	CPI		R17, 178				;SI R18 = 0, SALTA UNA LINEA
-000059 f7e9                      	BRNE	INCR17
+000057 9513                      	INC		R17					;INCREMENTA R17
+000058 3010                      	CPI		R17, 0				;SI R17 = 0?
+000059 f7e9                      	BRNE	INCR17				;SI R17 != 0
                                  INCR16:
-00005a 9503                      	INC		R16
-00005b 3001                      	CPI		R16, 1				;SI R18 = 0, SALTA UNA LINEA
-00005c f7e9                      	BRNE	INCR16
+00005a 9503                      	INC		R16					;INCREMENTA R16
+00005b 3001                      	CPI		R16, 1				;SI R16 = 1?
+00005c f7e9                      	BRNE	INCR16				;SI R17 != 1
 
 
 RESOURCE USE INFORMATION
