@@ -1,10 +1,10 @@
 
-AVRASM ver. 2.2.8  C:\Users\jaidy\OneDrive\Documentos\GitHub\Microprocesadores\Laboratorio2\Laboratorio2\Laboratorio2\main.asm Tue Feb 06 18:48:28 2024
+AVRASM ver. 2.2.8  C:\Users\jaidy\OneDrive\Documentos\GitHub\Microprocesadores\Laboratorio2\Laboratorio2\Laboratorio2\main.asm Thu Feb 08 23:54:48 2024
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328Pdef.inc'
-C:\Users\jaidy\OneDrive\Documentos\GitHub\Microprocesadores\Laboratorio2\Laboratorio2\Laboratorio2\main.asm(14): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\M328PDEF.inc'
+C:\Users\jaidy\OneDrive\Documentos\GitHub\Microprocesadores\Laboratorio2\Laboratorio2\Laboratorio2\main.asm(13): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\M328PDEF.inc'
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328Pdef.inc'
-C:\Users\jaidy\OneDrive\Documentos\GitHub\Microprocesadores\Laboratorio2\Laboratorio2\Laboratorio2\main.asm(14): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\M328PDEF.inc'
+C:\Users\jaidy\OneDrive\Documentos\GitHub\Microprocesadores\Laboratorio2\Laboratorio2\Laboratorio2\main.asm(13): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\M328PDEF.inc'
                                  
                                  ;*******************************************************************************
                                  
@@ -992,9 +992,8 @@ C:\Users\jaidy\OneDrive\Documentos\GitHub\Microprocesadores\Laboratorio2\Laborat
                                  ;Autor: Alejandra Marcos
                                  ;Laboratorio2.asm
                                  ;
-                                 ; Created: 6/02/2024 13:20:18
+                                 ; Created: 6/02/2024 15:49:22
                                  ; Author : jaidy
-                                 ;
                                  
                                  ;*******************************************************************************
                                  ;Encabezado
@@ -1047,64 +1046,107 @@ C:\Users\jaidy\OneDrive\Documentos\GitHub\Microprocesadores\Laboratorio2\Laborat
                                  .org 0x00
                                  
                                  ;*******************************************************************************
+                                 ;Tabla de Valores
+                                 ;*******************************************************************************
+000000 063f
+000001 4f5b
+000002 6d66
+000003 077d
+000004 6f7f
+000005 7c77
+000006 5e39
+000007 7179                      TABLA7SEG: .DB	 0x3F, 0x06, 0x5B, 0x4F, 0x66,	0x6D, 0x7D, 0x07, 0x7F, 0x6F, 0x77, 0x7C, 0X39, 0x5E, 0x79, 0x71
+                                 
+                                 ;*******************************************************************************
                                  ;Stack
                                  ;*******************************************************************************
-000000 ef0f                      	LDI		R16, LOW(RAMEND)
-000001 bf0d                      	OUT		SPL, R16 
-000002 e018                      	LDI		R17, HIGH(RAMEND)
-000003 bf1d                      	OUT		SPL, R17
+000008 ef0f                      	LDI		R16, LOW(RAMEND)
+000009 bf0d                      	OUT		SPL, R16 
+00000a e018                      	LDI		R17, HIGH(RAMEND)
+00000b bf1d                      	OUT		SPL, R17
+                                 
                                  
                                  ;*******************************************************************************
                                  ;Configuracion
                                  ;*******************************************************************************
                                  SETUP:
+                                 	//OSCILADOR
+00000c e800                      	LDI		R16, (1 << CLKPCE) ;	 ;HABILITA EL PRESCALER
+00000d 9300 0061                 	STS		CLKPR, R16 
+00000f e003                      	LDI		R16, 3					 ;OSCILADOR DE 2MHz
+000010 9300 0061                 	STS		CLKPR, R16
+                                 
                                  	//TIMER0
-000004 e000                      	LDI		R16, 0
-000005 bd06                      	OUT		TCNT0, R16
-000006 e90c                      	LDI		R16, 156			;
-000007 b901                      	OUT		OCF0A, R16			;VALOR INCIAL
-000008 e002                      	LDI		R16, 2				;
-000009 bd04                      	OUT		TCCR0A, R16			;CONFIGURACION CTC
-00000a e005                      	LDI		R16, 5				;
-00000b bd05                      	OUT		TCCR0B, R16			;PRESCALER 1024
+000012 e000                      	LDI		R16, 0
+000013 bd04                      	OUT		TCCR0A, R16			;TMR0 NORMAL, OC0A DESCONECTADO
+000014 e005                      	LDI		R16, 5				
+000015 bd05                      	OUT		TCCR0B, R16			;CS02 y CS00 PRESCALER 1024
+000016 e90e                      	LDI		R16, 158			
+000017 bd06                      	OUT		TCNT0, R16			;VALOR INICIAL
                                  	
                                  	//SALIDAS Y ENTRADAS
-00000c e000                      	LDI		R16, 0b0000_0000	;
-00000d b904                      	OUT		DDRB, R16			;COLOCO EL PUERTO B COMO ENTRADA
-00000e ef0f                      	LDI		R16, 0b1111_1111	;
-00000f b907                      	OUT		DDRC, R16			;COLOCO EL PUERTO C COMO SALIDA
-000010 ef0f                      	LDI		R16, 0b1111_1111	;
-000011 b90a                      	OUT		DDRD, R16			;COLOCO EL PUERTO D COMO SALIDA
+000018 e000                      	LDI		R16, 0b0000_0000	;
+000019 9300 00c1                 	STS		UCSR0B, R16
+00001b e000                      	LDI		R16, 0b0000_0000	;
+00001c b904                      	OUT		DDRB, R16			;COLOCO EL PUERTO B COMO ENTRADA
+00001d ef0f                      	LDI		R16, 0b1111_1111	;
+00001e b907                      	OUT		DDRC, R16			;COLOCO EL PUERTO C COMO SALIDA
+00001f ef0f                      	LDI		R16, 0b1111_1111	;
+000020 b90a                      	OUT		DDRD, R16			;COLOCO EL PUERTO D COMO SALIDA
                                  
-000012 e000                      	LDI		R16, 0
-000013 e010                      	LDI		R17, 0
-000014 e021                      	LDI		R18, 1
-000015 e030                      	LDI		R19, 0
-000016 b92b                      	OUT		PORTD, R18
+000021 e000                      	LDI		R16, 0
+000022 e010                      	LDI		R17, 0
+000023 e020                      	LDI		R18, 0
+000024 e040                      	LDI		R20, 0
+                                 
+000025 e0e0                      	LDI		ZL, LOW(TABLA7SEG << 1)
+000026 e0f0                      	LDI		ZH, HIGH(TABLA7SEG << 1)
                                  
                                  LOOP:
-000017 b92b                      	OUT		PORTD, R18
-000018 940e 001f                 	CALL	RETARDO
-00001a 9523                      	INC		R18
-00001b 3120                      	CPI		R18, 16
-00001c f7d1                      	BRNE	LOOP
-00001d e020                      	LDI		R18, 0
-00001e cff8                      	RJMP	LOOP 
+000027 940e 002c                 	CALL	AUMENTAR
+000029 940e 0036                 	CALL	DECREMENTAR
+00002b cffb                      	RJMP	LOOP 
                                  
                                  ;*******************************************************************************
                                  ;Subrutinas
                                  ;*******************************************************************************
-                                 ;RETARDO
+                                 ;INCREMENTAR NUMERO 1
+                                 AUMENTAR:
+00002c 9b18                      	SBIS	PINB, PB0			;VERIFICA SI EL BIT 0 DEL PUERTO B ES IGUAL A 1
+00002d 9508                      	RET							;SI EL BIT 0 ES IGUAL A 0 
+00002e 940e 0040                 	CALL	DELAY_100MS			;SI EL BIT 0 ES IGUAL A 1
+                                 CONFIRMAR_A:
+000030 9918                      	SBIC	PINB, PB0			;VERIFICA SI EL BIT 0 DEL PUERTO B ES IGUAL A 0
+000031 cffe                      	RJMP	CONFIRMAR_A			;SI EL BIT 0 ES IGUAL A 1	
+000032 9124                      	LPM		R18, Z
+000033 95e3                      	INC		ZL					;INCREMENTA EL NUMERO 1
+000034 b928                      	OUT		PORTC,R18			;MUESTRA EN EL PUERTO D
+000035 9508                      	RET
                                  
-                                 RETARDO:
-00001f b305                      	IN		R16, TIFR0			;
-000020 ff01                      	SBRS	R16, OCF0A			;VERIFICA SI OCF0A = 1
-000021 cffd                      	RJMP	RETARDO				;SI OCF0A = 0
-000022 9aa9                      	SBI		TIFR0, OCF0A		;SI OCF0A = 1, COLOCA A OCF0A = 0
-000023 9513                      	INC		R17
-000024 301a                      	CPI		R17, 10			
-000025 f7c9                      	BRNE	RETARDO
-000026 2711                      	CLR		R17
+                                 ;*******************************************************************************
+                                 ;DECREMENTAR NUMERO 1
+                                 DECREMENTAR:
+000036 9b19                      	SBIS	PINB, PB1			;VERIFICA SI EL BIT 1 DEL PUERTO B ES IGUAL A 1
+000037 9508                      	RET							;SI EL BIT 1 ES IGUAL A 0 
+000038 940e 0040                 	CALL	DELAY_100MS			;SI EL BIT 1 ES IGUAL A 1
+                                 CONFIRMAR_B:
+00003a 9919                      	SBIC	PINB, PB1			;VERIFICA SI EL BIT 1 DEL PUERTO B ES IGUAL A 0
+00003b cffe                      	RJMP	CONFIRMAR_B			;SI EL BIT 1 ES IGUAL A 1
+00003c 9124                      	LPM		R18, Z
+00003d 95ea                      	DEC		ZL					;INCREMENTA EL NUMERO 1
+00003e b928                      	OUT		PORTC,R18			;MUESTRA EN EL PUERTO D
+00003f 9508                      	RET
+                                 
+                                 ;*******************************************************************************
+                                 ;RETARDOS
+                                 DELAY_100MS:
+000040 b305                      	IN		R16, TIFR0 ; LEEMOS EL REGISTRO DE LAS BANDERAS
+000041 ff00                      	SBRS	R16, TOV0 ; VERIFICAMOS SI ESA BANDERA (TOV0) SE ENCENDIO
+000042 cffd                      	RJMP	DELAY_100MS
+000043 e90e                      	LDI		R16, 158 ; VOLVEMOS A CARGAR EL CONTADOR
+000044 bd06                      	OUT		TCNT0, R16
+000045 9aa8                      	SBI		TIFR0, TOV0 ;APAGAMOS LA BANDERA
+000046 9508                      	RET
 
 
 RESOURCE USE INFORMATION
@@ -1122,39 +1164,39 @@ counted separately from r26..r31 here.
 .dseg memory usage only counts static data declared with .byte
 
 "ATmega328P" register use summary:
-x  :   0 y  :   0 z  :   0 r0 :   0 r1 :   0 r2 :   0 r3 :   0 r4 :   0 
+x  :   0 y  :   0 z  :   2 r0 :   0 r1 :   0 r2 :   0 r3 :   0 r4 :   0 
 r5 :   0 r6 :   0 r7 :   0 r8 :   0 r9 :   0 r10:   0 r11:   0 r12:   0 
-r13:   0 r14:   0 r15:   0 r16:  19 r17:   6 r18:   6 r19:   1 r20:   0 
+r13:   0 r14:   0 r15:   0 r16:  25 r17:   3 r18:   5 r19:   0 r20:   1 
 r21:   0 r22:   0 r23:   0 r24:   0 r25:   0 r26:   0 r27:   0 r28:   0 
-r29:   0 r30:   0 r31:   0 
-Registers used: 4 out of 35 (11.4%)
+r29:   0 r30:   3 r31:   1 
+Registers used: 7 out of 35 (20.0%)
 
 "ATmega328P" instruction use summary:
 .lds  :   0 .sts  :   0 adc   :   0 add   :   0 adiw  :   0 and   :   0 
 andi  :   0 asr   :   0 bclr  :   0 bld   :   0 brbc  :   0 brbs  :   0 
 brcc  :   0 brcs  :   0 break :   0 breq  :   0 brge  :   0 brhc  :   0 
 brhs  :   0 brid  :   0 brie  :   0 brlo  :   0 brlt  :   0 brmi  :   0 
-brne  :   2 brpl  :   0 brsh  :   0 brtc  :   0 brts  :   0 brvc  :   0 
-brvs  :   0 bset  :   0 bst   :   0 call  :   1 cbi   :   0 cbr   :   0 
-clc   :   0 clh   :   0 cli   :   0 cln   :   0 clr   :   1 cls   :   0 
+brne  :   0 brpl  :   0 brsh  :   0 brtc  :   0 brts  :   0 brvc  :   0 
+brvs  :   0 bset  :   0 bst   :   0 call  :   4 cbi   :   0 cbr   :   0 
+clc   :   0 clh   :   0 cli   :   0 cln   :   0 clr   :   0 cls   :   0 
 clt   :   0 clv   :   0 clz   :   0 com   :   0 cp    :   0 cpc   :   0 
-cpi   :   2 cpse  :   0 dec   :   0 eor   :   0 fmul  :   0 fmuls :   0 
-fmulsu:   0 icall :   0 ijmp  :   0 in    :   1 inc   :   2 jmp   :   0 
-ld    :   0 ldd   :   0 ldi   :  14 lds   :   0 lpm   :   0 lsl   :   0 
+cpi   :   0 cpse  :   0 dec   :   1 eor   :   0 fmul  :   0 fmuls :   0 
+fmulsu:   0 icall :   0 ijmp  :   0 in    :   1 inc   :   1 jmp   :   0 
+ld    :   0 ldd   :   0 ldi   :  18 lds   :   0 lpm   :   4 lsl   :   0 
 lsr   :   0 mov   :   0 movw  :   0 mul   :   0 muls  :   0 mulsu :   0 
 neg   :   0 nop   :   0 or    :   0 ori   :   0 out   :  11 pop   :   0 
-push  :   0 rcall :   0 ret   :   1 reti  :   0 rjmp  :   2 rol   :   0 
-ror   :   0 sbc   :   0 sbci  :   0 sbi   :   1 sbic  :   0 sbis  :   0 
+push  :   0 rcall :   0 ret   :   5 reti  :   0 rjmp  :   4 rol   :   0 
+ror   :   0 sbc   :   0 sbci  :   0 sbi   :   1 sbic  :   2 sbis  :   2 
 sbiw  :   0 sbr   :   0 sbrc  :   0 sbrs  :   1 sec   :   0 seh   :   0 
 sei   :   0 sen   :   0 ser   :   0 ses   :   0 set   :   0 sev   :   0 
-sez   :   0 sleep :   0 spm   :   0 st    :   0 std   :   0 sts   :   0 
+sez   :   0 sleep :   0 spm   :   0 st    :   0 std   :   0 sts   :   3 
 sub   :   0 subi  :   0 swap  :   0 tst   :   0 wdr   :   0 
-Instructions used: 12 out of 113 (10.6%)
+Instructions used: 14 out of 113 (12.4%)
 
 "ATmega328P" memory use summary [bytes]:
 Segment   Begin    End      Code   Data   Used    Size   Use%
 ---------------------------------------------------------------
-[.cseg] 0x000000 0x000050     80      0     80   32768   0.2%
+[.cseg] 0x000000 0x00008e    126     16    142   32768   0.4%
 [.dseg] 0x000100 0x000100      0      0      0    2048   0.0%
 [.eseg] 0x000000 0x000000      0      0      0    1024   0.0%
 
