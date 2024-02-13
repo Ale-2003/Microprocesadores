@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.8  C:\Users\jaidy\OneDrive\Documentos\GitHub\Microprocesadores\Laboratorio2\Laboratorio2\Laboratorio2\main.asm Thu Feb 08 23:54:48 2024
+AVRASM ver. 2.2.8  C:\Users\jaidy\OneDrive\Documentos\GitHub\Microprocesadores\Laboratorio2\Laboratorio2\Laboratorio2\main.asm Mon Feb 12 20:31:53 2024
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328Pdef.inc'
 C:\Users\jaidy\OneDrive\Documentos\GitHub\Microprocesadores\Laboratorio2\Laboratorio2\Laboratorio2\main.asm(13): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\M328PDEF.inc'
@@ -995,9 +995,9 @@ C:\Users\jaidy\OneDrive\Documentos\GitHub\Microprocesadores\Laboratorio2\Laborat
                                  ; Created: 6/02/2024 15:49:22
                                  ; Author : jaidy
                                  
-                                 ;*******************************************************************************
+                                 ;***************************
                                  ;Encabezado
-                                 ;*******************************************************************************
+                                 ;***************************
                                  .include "M328PDEF.inc"
                                  
                                  ;***** Created: 2011-02-09 12:03 ******* Source: ATmega328P.xml **********
@@ -1045,9 +1045,9 @@ C:\Users\jaidy\OneDrive\Documentos\GitHub\Microprocesadores\Laboratorio2\Laborat
                                  .cseg
                                  .org 0x00
                                  
-                                 ;*******************************************************************************
+                                 ;***************************
                                  ;Tabla de Valores
-                                 ;*******************************************************************************
+                                 ;***************************
 000000 063f
 000001 4f5b
 000002 6d66
@@ -1057,18 +1057,18 @@ C:\Users\jaidy\OneDrive\Documentos\GitHub\Microprocesadores\Laboratorio2\Laborat
 000006 5e39
 000007 7179                      TABLA7SEG: .DB	 0x3F, 0x06, 0x5B, 0x4F, 0x66,	0x6D, 0x7D, 0x07, 0x7F, 0x6F, 0x77, 0x7C, 0X39, 0x5E, 0x79, 0x71
                                  
-                                 ;*******************************************************************************
+                                 ;***************************
                                  ;Stack
-                                 ;*******************************************************************************
+                                 ;***************************
 000008 ef0f                      	LDI		R16, LOW(RAMEND)
 000009 bf0d                      	OUT		SPL, R16 
 00000a e018                      	LDI		R17, HIGH(RAMEND)
 00000b bf1d                      	OUT		SPL, R17
                                  
                                  
-                                 ;*******************************************************************************
+                                 ;***************************
                                  ;Configuracion
-                                 ;*******************************************************************************
+                                 ;***************************
                                  SETUP:
                                  	//OSCILADOR
 00000c e800                      	LDI		R16, (1 << CLKPCE) ;	 ;HABILITA EL PRESCALER
@@ -1087,7 +1087,7 @@ C:\Users\jaidy\OneDrive\Documentos\GitHub\Microprocesadores\Laboratorio2\Laborat
                                  	//SALIDAS Y ENTRADAS
 000018 e000                      	LDI		R16, 0b0000_0000	;
 000019 9300 00c1                 	STS		UCSR0B, R16
-00001b e000                      	LDI		R16, 0b0000_0000	;
+00001b ef00                      	LDI		R16, 0b1111_0000	;
 00001c b904                      	OUT		DDRB, R16			;COLOCO EL PUERTO B COMO ENTRADA
 00001d ef0f                      	LDI		R16, 0b1111_1111	;
 00001e b907                      	OUT		DDRC, R16			;COLOCO EL PUERTO C COMO SALIDA
@@ -1097,56 +1097,104 @@ C:\Users\jaidy\OneDrive\Documentos\GitHub\Microprocesadores\Laboratorio2\Laborat
 000021 e000                      	LDI		R16, 0
 000022 e010                      	LDI		R17, 0
 000023 e020                      	LDI		R18, 0
-000024 e040                      	LDI		R20, 0
+000024 e030                      	LDI		R19, 0
+000025 e040                      	LDI		R20, 0
                                  
-000025 e0e0                      	LDI		ZL, LOW(TABLA7SEG << 1)
-000026 e0f0                      	LDI		ZH, HIGH(TABLA7SEG << 1)
+000026 e0e0                      	LDI		ZL, LOW(TABLA7SEG << 1)
+000027 e0f0                      	LDI		ZH, HIGH(TABLA7SEG << 1)
+                                 
+000028 9124                      	LPM		R18, Z
+000029 b92b                      	OUT		PORTD, R18
+00002a b918                      	OUT		PORTC, R17
                                  
                                  LOOP:
-000027 940e 002c                 	CALL	AUMENTAR
-000029 940e 0036                 	CALL	DECREMENTAR
-00002b cffb                      	RJMP	LOOP 
+00002b 940e 0032                 	CALL	AUMENTAR
+00002d 940e 003d                 	CALL	DECREMENTAR
+00002f 940e 0048                 	CALL	CONTADOR
+000031 cff9                      	RJMP	LOOP 
                                  
-                                 ;*******************************************************************************
+                                 ;***************************
                                  ;Subrutinas
-                                 ;*******************************************************************************
+                                 ;***************************
                                  ;INCREMENTAR NUMERO 1
                                  AUMENTAR:
-00002c 9b18                      	SBIS	PINB, PB0			;VERIFICA SI EL BIT 0 DEL PUERTO B ES IGUAL A 1
-00002d 9508                      	RET							;SI EL BIT 0 ES IGUAL A 0 
-00002e 940e 0040                 	CALL	DELAY_100MS			;SI EL BIT 0 ES IGUAL A 1
-                                 CONFIRMAR_A:
-000030 9918                      	SBIC	PINB, PB0			;VERIFICA SI EL BIT 0 DEL PUERTO B ES IGUAL A 0
-000031 cffe                      	RJMP	CONFIRMAR_A			;SI EL BIT 0 ES IGUAL A 1	
-000032 9124                      	LPM		R18, Z
-000033 95e3                      	INC		ZL					;INCREMENTA EL NUMERO 1
-000034 b928                      	OUT		PORTC,R18			;MUESTRA EN EL PUERTO D
-000035 9508                      	RET
+000032 9b18                      	SBIS	PINB, PB0			;VERIFICA SI EL BIT 0 DEL PUERTO B ES IGUAL A 1
+000033 9508                      	RET							;SI EL BIT 0 ES IGUAL A 0 
+000034 940e 0061                 	CALL	DELAY_300MS			;SI EL BIT 0 ES IGUAL A 1
+000036 9b18                      	SBIS	PINB, PB0			;VERIFICA SI EL BIT 0 DEL PUERTO B ES IGUAL A 0
+000037 cff3                      	RJMP	LOOP				;SI EL BIT 0 ES IGUAL A 1
+000038 9533                      	INC		R19
+000039 95e3                      	INC		ZL	
+00003a 9124                      	LPM		R18, Z				;INCREMENTA EL NUMERO 1
+00003b b92b                      	OUT		PORTD,R18			;MUESTRA EN EL PUERTO D
+00003c 9508                      	RET
                                  
-                                 ;*******************************************************************************
+                                 ;***************************
                                  ;DECREMENTAR NUMERO 1
                                  DECREMENTAR:
-000036 9b19                      	SBIS	PINB, PB1			;VERIFICA SI EL BIT 1 DEL PUERTO B ES IGUAL A 1
-000037 9508                      	RET							;SI EL BIT 1 ES IGUAL A 0 
-000038 940e 0040                 	CALL	DELAY_100MS			;SI EL BIT 1 ES IGUAL A 1
-                                 CONFIRMAR_B:
-00003a 9919                      	SBIC	PINB, PB1			;VERIFICA SI EL BIT 1 DEL PUERTO B ES IGUAL A 0
-00003b cffe                      	RJMP	CONFIRMAR_B			;SI EL BIT 1 ES IGUAL A 1
-00003c 9124                      	LPM		R18, Z
-00003d 95ea                      	DEC		ZL					;INCREMENTA EL NUMERO 1
-00003e b928                      	OUT		PORTC,R18			;MUESTRA EN EL PUERTO D
-00003f 9508                      	RET
+00003d 9b19                      	SBIS	PINB, PB1			;VERIFICA SI EL BIT 1 DEL PUERTO B ES IGUAL A 1
+00003e 9508                      	RET							;SI EL BIT 1 ES IGUAL A 0 
+00003f 940e 0061                 	CALL	DELAY_300MS			;SI EL BIT 0 ES IGUAL A 1
+000041 9b19                      	SBIS	PINB, PB1			;VERIFICA SI EL BIT 1 DEL PUERTO B ES IGUAL A 0
+000042 cfe8                      	RJMP	LOOP			;SI EL BIT 1 ES IGUAL A 1
+000043 953a                      	DEC		R19	
+000044 95ea                      	DEC		ZL					;INCREMENTA EL NUMERO 1
+000045 9124                      	LPM		R18, Z
+000046 b92b                      	OUT		PORTD,R18			;MUESTRA EN EL PUERTO D
+000047 9508                      	RET
                                  
-                                 ;*******************************************************************************
+                                 ;***************************
+                                 ;CONTADOR
+                                 CONTADOR:
+000048 940e 0068                 	CALL	DELAY_1S
+00004a 9513                      	INC		R17
+00004b b918                      	OUT		PORTC, R17
+00004c 3110                      	CPI		R17, 16
+00004d f409                      	BRNE	COMPARAR
+00004e e010                      	LDI		R17, 0
+                                 COMPARAR:
+00004f 1713                      	CP		R17, R19
+000050 f6d1                      	BRNE	LOOP
+000051 e010                      	LDI		R17, 0
+000052 ff44                      	SBRS	R20, 4
+000053 c003                      	RJMP	ZERO
+000054 982c                      	CBI		PORTB, 4
+000055 e040                      	LDI		R20, 0
+000056 9508                      	RET
+                                 ZERO:
+000057 9a2c                      	SBI		PORTB, 4
+000058 e140                      	LDI		R20, 16
+000059 9508                      	RET
+                                 
+                                 
+                                 ;***************************
                                  ;RETARDOS
                                  DELAY_100MS:
-000040 b305                      	IN		R16, TIFR0 ; LEEMOS EL REGISTRO DE LAS BANDERAS
-000041 ff00                      	SBRS	R16, TOV0 ; VERIFICAMOS SI ESA BANDERA (TOV0) SE ENCENDIO
-000042 cffd                      	RJMP	DELAY_100MS
-000043 e90e                      	LDI		R16, 158 ; VOLVEMOS A CARGAR EL CONTADOR
-000044 bd06                      	OUT		TCNT0, R16
-000045 9aa8                      	SBI		TIFR0, TOV0 ;APAGAMOS LA BANDERA
-000046 9508                      	RET
+00005a b305                      	IN		R16, TIFR0 ; LEEMOS EL REGISTRO DE LAS BANDERAS
+00005b ff00                      	SBRS	R16, TOV0 ; VERIFICAMOS SI ESA BANDERA (TOV0) SE ENCENDIO
+00005c cffd                      	RJMP	DELAY_100MS
+00005d e90e                      	LDI		R16, 158 ; VOLVEMOS A CARGAR EL CONTADOR
+00005e bd06                      	OUT		TCNT0, R16
+00005f 9aa8                      	SBI		TIFR0, TOV0 ;APAGAMOS LA BANDERA
+000060 9508                      	RET
+                                 
+                                 DELAY_300MS:
+000061 940e 005a                 	CALL	DELAY_100MS
+000063 940e 005a                 	CALL	DELAY_100MS
+000065 940e 005a                 	CALL	DELAY_100MS
+000067 9508                      	RET
+                                 
+                                 DELAY_1S:
+000068 940e 005a                 	CALL	DELAY_100MS
+00006a 940e 005a                 	CALL	DELAY_100MS
+00006c 940e 005a                 	CALL	DELAY_100MS
+00006e 940e 005a                 	CALL	DELAY_100MS
+000070 940e 005a                 	CALL	DELAY_100MS
+000072 940e 005a                 	CALL	DELAY_100MS
+000074 940e 005a                 	CALL	DELAY_100MS
+000076 940e 005a                 	CALL	DELAY_100MS
+000078 940e 005a                 	CALL	DELAY_100MS
+00007a 940e 005a                 	CALL	DELAY_100MS
 
 
 RESOURCE USE INFORMATION
@@ -1164,39 +1212,39 @@ counted separately from r26..r31 here.
 .dseg memory usage only counts static data declared with .byte
 
 "ATmega328P" register use summary:
-x  :   0 y  :   0 z  :   2 r0 :   0 r1 :   0 r2 :   0 r3 :   0 r4 :   0 
+x  :   0 y  :   0 z  :   3 r0 :   0 r1 :   0 r2 :   0 r3 :   0 r4 :   0 
 r5 :   0 r6 :   0 r7 :   0 r8 :   0 r9 :   0 r10:   0 r11:   0 r12:   0 
-r13:   0 r14:   0 r15:   0 r16:  25 r17:   3 r18:   5 r19:   0 r20:   1 
+r13:   0 r14:   0 r15:   0 r16:  25 r17:  10 r18:   7 r19:   4 r20:   4 
 r21:   0 r22:   0 r23:   0 r24:   0 r25:   0 r26:   0 r27:   0 r28:   0 
 r29:   0 r30:   3 r31:   1 
-Registers used: 7 out of 35 (20.0%)
+Registers used: 8 out of 35 (22.9%)
 
 "ATmega328P" instruction use summary:
 .lds  :   0 .sts  :   0 adc   :   0 add   :   0 adiw  :   0 and   :   0 
 andi  :   0 asr   :   0 bclr  :   0 bld   :   0 brbc  :   0 brbs  :   0 
 brcc  :   0 brcs  :   0 break :   0 breq  :   0 brge  :   0 brhc  :   0 
 brhs  :   0 brid  :   0 brie  :   0 brlo  :   0 brlt  :   0 brmi  :   0 
-brne  :   0 brpl  :   0 brsh  :   0 brtc  :   0 brts  :   0 brvc  :   0 
-brvs  :   0 bset  :   0 bst   :   0 call  :   4 cbi   :   0 cbr   :   0 
+brne  :   2 brpl  :   0 brsh  :   0 brtc  :   0 brts  :   0 brvc  :   0 
+brvs  :   0 bset  :   0 bst   :   0 call  :  19 cbi   :   1 cbr   :   0 
 clc   :   0 clh   :   0 cli   :   0 cln   :   0 clr   :   0 cls   :   0 
-clt   :   0 clv   :   0 clz   :   0 com   :   0 cp    :   0 cpc   :   0 
-cpi   :   0 cpse  :   0 dec   :   1 eor   :   0 fmul  :   0 fmuls :   0 
-fmulsu:   0 icall :   0 ijmp  :   0 in    :   1 inc   :   1 jmp   :   0 
-ld    :   0 ldd   :   0 ldi   :  18 lds   :   0 lpm   :   4 lsl   :   0 
+clt   :   0 clv   :   0 clz   :   0 com   :   0 cp    :   1 cpc   :   0 
+cpi   :   1 cpse  :   0 dec   :   2 eor   :   0 fmul  :   0 fmuls :   0 
+fmulsu:   0 icall :   0 ijmp  :   0 in    :   1 inc   :   3 jmp   :   0 
+ld    :   0 ldd   :   0 ldi   :  23 lds   :   0 lpm   :   6 lsl   :   0 
 lsr   :   0 mov   :   0 movw  :   0 mul   :   0 muls  :   0 mulsu :   0 
-neg   :   0 nop   :   0 or    :   0 ori   :   0 out   :  11 pop   :   0 
-push  :   0 rcall :   0 ret   :   5 reti  :   0 rjmp  :   4 rol   :   0 
-ror   :   0 sbc   :   0 sbci  :   0 sbi   :   1 sbic  :   2 sbis  :   2 
-sbiw  :   0 sbr   :   0 sbrc  :   0 sbrs  :   1 sec   :   0 seh   :   0 
+neg   :   0 nop   :   0 or    :   0 ori   :   0 out   :  14 pop   :   0 
+push  :   0 rcall :   0 ret   :   9 reti  :   0 rjmp  :   5 rol   :   0 
+ror   :   0 sbc   :   0 sbci  :   0 sbi   :   2 sbic  :   0 sbis  :   4 
+sbiw  :   0 sbr   :   0 sbrc  :   0 sbrs  :   2 sec   :   0 seh   :   0 
 sei   :   0 sen   :   0 ser   :   0 ses   :   0 set   :   0 sev   :   0 
 sez   :   0 sleep :   0 spm   :   0 st    :   0 std   :   0 sts   :   3 
 sub   :   0 subi  :   0 swap  :   0 tst   :   0 wdr   :   0 
-Instructions used: 14 out of 113 (12.4%)
+Instructions used: 17 out of 113 (15.0%)
 
 "ATmega328P" memory use summary [bytes]:
 Segment   Begin    End      Code   Data   Used    Size   Use%
 ---------------------------------------------------------------
-[.cseg] 0x000000 0x00008e    126     16    142   32768   0.4%
+[.cseg] 0x000000 0x0000fa    234     16    250   32768   0.8%
 [.dseg] 0x000100 0x000100      0      0      0    2048   0.0%
 [.eseg] 0x000000 0x000000      0      0      0    1024   0.0%
 

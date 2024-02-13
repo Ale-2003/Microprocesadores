@@ -7,30 +7,30 @@
 ; Created: 6/02/2024 15:49:22
 ; Author : jaidy
 
-;*******************************************************************************
+;***************************
 ;Encabezado
-;*******************************************************************************
+;***************************
 .include "M328PDEF.inc"
 .cseg
 .org 0x00
 
-;*******************************************************************************
+;***************************
 ;Tabla de Valores
-;*******************************************************************************
+;***************************
 TABLA7SEG: .DB	 0x3F, 0x06, 0x5B, 0x4F, 0x66,	0x6D, 0x7D, 0x07, 0x7F, 0x6F, 0x77, 0x7C, 0X39, 0x5E, 0x79, 0x71
 
-;*******************************************************************************
+;***************************
 ;Stack
-;*******************************************************************************
+;***************************
 	LDI		R16, LOW(RAMEND)
 	OUT		SPL, R16 
 	LDI		R17, HIGH(RAMEND)
 	OUT		SPL, R17
 
 
-;*******************************************************************************
+;***************************
 ;Configuracion
-;*******************************************************************************
+;***************************
 SETUP:
 	//OSCILADOR
 	LDI		R16, (1 << CLKPCE) ;	 ;HABILITA EL PRESCALER
@@ -49,7 +49,7 @@ SETUP:
 	//SALIDAS Y ENTRADAS
 	LDI		R16, 0b0000_0000	;
 	STS		UCSR0B, R16
-	LDI		R16, 0b0000_0000	;
+	LDI		R16, 0b1111_0000	;
 	OUT		DDRB, R16			;COLOCO EL PUERTO B COMO ENTRADA
 	LDI		R16, 0b1111_1111	;
 	OUT		DDRC, R16			;COLOCO EL PUERTO C COMO SALIDA
@@ -59,47 +59,77 @@ SETUP:
 	LDI		R16, 0
 	LDI		R17, 0
 	LDI		R18, 0
+	LDI		R19, 0
 	LDI		R20, 0
 
 	LDI		ZL, LOW(TABLA7SEG << 1)
 	LDI		ZH, HIGH(TABLA7SEG << 1)
 
+	LPM		R18, Z
+	OUT		PORTD, R18
+	OUT		PORTC, R17
+
 LOOP:
 	CALL	AUMENTAR
 	CALL	DECREMENTAR
+	CALL	CONTADOR
 	RJMP	LOOP 
 
-;*******************************************************************************
+;***************************
 ;Subrutinas
-;*******************************************************************************
+;***************************
 ;INCREMENTAR NUMERO 1
 AUMENTAR:
 	SBIS	PINB, PB0			;VERIFICA SI EL BIT 0 DEL PUERTO B ES IGUAL A 1
 	RET							;SI EL BIT 0 ES IGUAL A 0 
-	CALL	DELAY_100MS			;SI EL BIT 0 ES IGUAL A 1
-CONFIRMAR_A:
-	SBIC	PINB, PB0			;VERIFICA SI EL BIT 0 DEL PUERTO B ES IGUAL A 0
-	RJMP	CONFIRMAR_A			;SI EL BIT 0 ES IGUAL A 1	
-	LPM		R18, Z
-	INC		ZL					;INCREMENTA EL NUMERO 1
-	OUT		PORTC,R18			;MUESTRA EN EL PUERTO D
+	CALL	DELAY_300MS			;SI EL BIT 0 ES IGUAL A 1
+	SBIS	PINB, PB0			;VERIFICA SI EL BIT 0 DEL PUERTO B ES IGUAL A 0
+	RJMP	LOOP				;SI EL BIT 0 ES IGUAL A 1
+	INC		R19
+	INC		ZL	
+	LPM		R18, Z				;INCREMENTA EL NUMERO 1
+	OUT		PORTD,R18			;MUESTRA EN EL PUERTO D
 	RET
 
-;*******************************************************************************
+;***************************
 ;DECREMENTAR NUMERO 1
 DECREMENTAR:
 	SBIS	PINB, PB1			;VERIFICA SI EL BIT 1 DEL PUERTO B ES IGUAL A 1
 	RET							;SI EL BIT 1 ES IGUAL A 0 
-	CALL	DELAY_100MS			;SI EL BIT 1 ES IGUAL A 1
-CONFIRMAR_B:
-	SBIC	PINB, PB1			;VERIFICA SI EL BIT 1 DEL PUERTO B ES IGUAL A 0
-	RJMP	CONFIRMAR_B			;SI EL BIT 1 ES IGUAL A 1
-	LPM		R18, Z
+	CALL	DELAY_300MS			;SI EL BIT 0 ES IGUAL A 1
+	SBIS	PINB, PB1			;VERIFICA SI EL BIT 1 DEL PUERTO B ES IGUAL A 0
+	RJMP	LOOP			;SI EL BIT 1 ES IGUAL A 1
+	DEC		R19	
 	DEC		ZL					;INCREMENTA EL NUMERO 1
-	OUT		PORTC,R18			;MUESTRA EN EL PUERTO D
+	LPM		R18, Z
+	OUT		PORTD,R18			;MUESTRA EN EL PUERTO D
 	RET
 
-;*******************************************************************************
+;***************************
+;CONTADOR
+CONTADOR:
+	CALL	DELAY_1S
+	INC		R17
+	OUT		PORTC, R17
+	CPI		R17, 16
+	BRNE	COMPARAR
+	LDI		R17, 0
+COMPARAR:
+	CP		R17, R19
+	BRNE	LOOP
+	LDI		R17, 0
+	SBRS	R20, 4
+	RJMP	ZERO
+	CBI		PORTB, 4
+	LDI		R20, 0
+	RET
+ZERO:
+	SBI		PORTB, 4
+	LDI		R20, 16
+	RET
+
+
+;***************************
 ;RETARDOS
 DELAY_100MS:
 	IN		R16, TIFR0 ; LEEMOS EL REGISTRO DE LAS BANDERAS
@@ -108,4 +138,23 @@ DELAY_100MS:
 	LDI		R16, 158 ; VOLVEMOS A CARGAR EL CONTADOR
 	OUT		TCNT0, R16
 	SBI		TIFR0, TOV0 ;APAGAMOS LA BANDERA
+	RET
+
+DELAY_300MS:
+	CALL	DELAY_100MS
+	CALL	DELAY_100MS
+	CALL	DELAY_100MS
+	RET
+
+DELAY_1S:
+	CALL	DELAY_100MS
+	CALL	DELAY_100MS
+	CALL	DELAY_100MS
+	CALL	DELAY_100MS
+	CALL	DELAY_100MS
+	CALL	DELAY_100MS
+	CALL	DELAY_100MS
+	CALL	DELAY_100MS
+	CALL	DELAY_100MS
+	CALL	DELAY_100MS
 	RET

@@ -25,11 +25,14 @@
  <LABELS>
   <TABLA7SEG><FILE>C:\Users\jaidy\OneDrive\Documentos\GitHub\Microprocesadores\Laboratorio2\Laboratorio2\Laboratorio2\main.asm</FILE><LINE>20</LINE></TABLA7SEG>
   <SETUP><FILE>C:\Users\jaidy\OneDrive\Documentos\GitHub\Microprocesadores\Laboratorio2\Laboratorio2\Laboratorio2\main.asm</FILE><LINE>34</LINE></SETUP>
-  <LOOP><FILE>C:\Users\jaidy\OneDrive\Documentos\GitHub\Microprocesadores\Laboratorio2\Laboratorio2\Laboratorio2\main.asm</FILE><LINE>67</LINE></LOOP>
-  <AUMENTAR><FILE>C:\Users\jaidy\OneDrive\Documentos\GitHub\Microprocesadores\Laboratorio2\Laboratorio2\Laboratorio2\main.asm</FILE><LINE>76</LINE></AUMENTAR>
-  <DECREMENTAR><FILE>C:\Users\jaidy\OneDrive\Documentos\GitHub\Microprocesadores\Laboratorio2\Laboratorio2\Laboratorio2\main.asm</FILE><LINE>90</LINE></DECREMENTAR>
-  <DELAY_100MS><FILE>C:\Users\jaidy\OneDrive\Documentos\GitHub\Microprocesadores\Laboratorio2\Laboratorio2\Laboratorio2\main.asm</FILE><LINE>104</LINE></DELAY_100MS>
-  <CONFIRMAR_A><FILE>C:\Users\jaidy\OneDrive\Documentos\GitHub\Microprocesadores\Laboratorio2\Laboratorio2\Laboratorio2\main.asm</FILE><LINE>80</LINE></CONFIRMAR_A>
-  <CONFIRMAR_B><FILE>C:\Users\jaidy\OneDrive\Documentos\GitHub\Microprocesadores\Laboratorio2\Laboratorio2\Laboratorio2\main.asm</FILE><LINE>94</LINE></CONFIRMAR_B>
+  <LOOP><FILE>C:\Users\jaidy\OneDrive\Documentos\GitHub\Microprocesadores\Laboratorio2\Laboratorio2\Laboratorio2\main.asm</FILE><LINE>72</LINE></LOOP>
+  <AUMENTAR><FILE>C:\Users\jaidy\OneDrive\Documentos\GitHub\Microprocesadores\Laboratorio2\Laboratorio2\Laboratorio2\main.asm</FILE><LINE>82</LINE></AUMENTAR>
+  <DECREMENTAR><FILE>C:\Users\jaidy\OneDrive\Documentos\GitHub\Microprocesadores\Laboratorio2\Laboratorio2\Laboratorio2\main.asm</FILE><LINE>96</LINE></DECREMENTAR>
+  <CONTADOR><FILE>C:\Users\jaidy\OneDrive\Documentos\GitHub\Microprocesadores\Laboratorio2\Laboratorio2\Laboratorio2\main.asm</FILE><LINE>110</LINE></CONTADOR>
+  <DELAY_300MS><FILE>C:\Users\jaidy\OneDrive\Documentos\GitHub\Microprocesadores\Laboratorio2\Laboratorio2\Laboratorio2\main.asm</FILE><LINE>143</LINE></DELAY_300MS>
+  <DELAY_1S><FILE>C:\Users\jaidy\OneDrive\Documentos\GitHub\Microprocesadores\Laboratorio2\Laboratorio2\Laboratorio2\main.asm</FILE><LINE>149</LINE></DELAY_1S>
+  <COMPARAR><FILE>C:\Users\jaidy\OneDrive\Documentos\GitHub\Microprocesadores\Laboratorio2\Laboratorio2\Laboratorio2\main.asm</FILE><LINE>117</LINE></COMPARAR>
+  <ZERO><FILE>C:\Users\jaidy\OneDrive\Documentos\GitHub\Microprocesadores\Laboratorio2\Laboratorio2\Laboratorio2\main.asm</FILE><LINE>126</LINE></ZERO>
+  <DELAY_100MS><FILE>C:\Users\jaidy\OneDrive\Documentos\GitHub\Microprocesadores\Laboratorio2\Laboratorio2\Laboratorio2\main.asm</FILE><LINE>134</LINE></DELAY_100MS>
  </LABELS>
 </ASSEMBLER_INFO>
