@@ -1,0 +1,101 @@
+<ASSEMBLER_INFO>
+ <VERSION>2.2.8</VERSION>
+ <DEVICE>"ATmega328P"</DEVICE>
+ <WORKING_DIR>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Proyecto 1\Proyecto1\Proyecto1\Debug</WORKING_DIR>
+ <INCLUDE_PATH>
+  <DIR>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc</DIR>
+  <DIR>C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avrassembler\Include</DIR>
+  <DIR></DIR>
+ </INCLUDE_PATH>
+ <SOURCE_FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Proyecto 1\Proyecto1\Proyecto1\main.asm</SOURCE_FILE>
+ <INCLUDED_FILES>
+  <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328Pdef.inc</FILE>
+  <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\M328PDEF.INC</FILE>
+ </INCLUDED_FILES>
+ <OBJECT_FILES>
+  <FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Proyecto 1\Proyecto1\Proyecto1\Debug\Proyecto1.obj</FILE>
+ </OBJECT_FILES>
+ <HEX_FILES>
+  <FILE>Proyecto1.hex</FILE>
+ </HEX_FILES>
+ <OUTPUT_FILES>
+  <FILE>Proyecto1.map</FILE>
+  <FILE>Proyecto1.lss</FILE>
+ </OUTPUT_FILES>
+ <LABELS>
+  <MAIN><FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Proyecto 1\Proyecto1\Proyecto1\main.asm</FILE><LINE>29</LINE></MAIN>
+  <ISR_PCINT0><FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Proyecto 1\Proyecto1\Proyecto1\main.asm</FILE><LINE>609</LINE></ISR_PCINT0>
+  <ISR_TIMER2><FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Proyecto 1\Proyecto1\Proyecto1\main.asm</FILE><LINE>755</LINE></ISR_TIMER2>
+  <ISR_TIMER0><FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Proyecto 1\Proyecto1\Proyecto1\main.asm</FILE><LINE>684</LINE></ISR_TIMER0>
+  <TABLA7SEG><FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Proyecto 1\Proyecto1\Proyecto1\main.asm</FILE><LINE>26</LINE></TABLA7SEG>
+  <SETUP><FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Proyecto 1\Proyecto1\Proyecto1\main.asm</FILE><LINE>41</LINE></SETUP>
+  <LOOP><FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Proyecto 1\Proyecto1\Proyecto1\main.asm</FILE><LINE>144</LINE></LOOP>
+  <ESTADO0><FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Proyecto 1\Proyecto1\Proyecto1\main.asm</FILE><LINE>159</LINE></ESTADO0>
+  <ESTADO1><FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Proyecto 1\Proyecto1\Proyecto1\main.asm</FILE><LINE>165</LINE></ESTADO1>
+  <ESTADO2><FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Proyecto 1\Proyecto1\Proyecto1\main.asm</FILE><LINE>171</LINE></ESTADO2>
+  <ESTADO3><FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Proyecto 1\Proyecto1\Proyecto1\main.asm</FILE><LINE>177</LINE></ESTADO3>
+  <ESTADO4><FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Proyecto 1\Proyecto1\Proyecto1\main.asm</FILE><LINE>183</LINE></ESTADO4>
+  <ESTADO5><FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Proyecto 1\Proyecto1\Proyecto1\main.asm</FILE><LINE>189</LINE></ESTADO5>
+  <HORA><FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Proyecto 1\Proyecto1\Proyecto1\main.asm</FILE><LINE>197</LINE></HORA>
+  <CONFIG_HORA><FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Proyecto 1\Proyecto1\Proyecto1\main.asm</FILE><LINE>223</LINE></CONFIG_HORA>
+  <FECHA><FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Proyecto 1\Proyecto1\Proyecto1\main.asm</FILE><LINE>244</LINE></FECHA>
+  <CONFIG_FECHA><FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Proyecto 1\Proyecto1\Proyecto1\main.asm</FILE><LINE>272</LINE></CONFIG_FECHA>
+  <CONFIG_ALARMA><FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Proyecto 1\Proyecto1\Proyecto1\main.asm</FILE><LINE>297</LINE></CONFIG_ALARMA>
+  <ALARMA><FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Proyecto 1\Proyecto1\Proyecto1\main.asm</FILE><LINE>318</LINE></ALARMA>
+  <NO21><FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Proyecto 1\Proyecto1\Proyecto1\main.asm</FILE><LINE>203</LINE></NO21>
+  <CUENTA><FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Proyecto 1\Proyecto1\Proyecto1\main.asm</FILE><LINE>361</LINE></CUENTA>
+  <NO22><FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Proyecto 1\Proyecto1\Proyecto1\main.asm</FILE><LINE>249</LINE></NO22>
+  <CUENTA_ALARMA><FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Proyecto 1\Proyecto1\Proyecto1\main.asm</FILE><LINE>392</LINE></CUENTA_ALARMA>
+  <NO_1><FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Proyecto 1\Proyecto1\Proyecto1\main.asm</FILE><LINE>333</LINE></NO_1>
+  <NO_2><FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Proyecto 1\Proyecto1\Proyecto1\main.asm</FILE><LINE>335</LINE></NO_2>
+  <NO23><FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Proyecto 1\Proyecto1\Proyecto1\main.asm</FILE><LINE>340</LINE></NO23>
+  <SALIR_CUENTA><FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Proyecto 1\Proyecto1\Proyecto1\main.asm</FILE><LINE>387</LINE></SALIR_CUENTA>
+  <HORA_24><FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Proyecto 1\Proyecto1\Proyecto1\main.asm</FILE><LINE>379</LINE></HORA_24>
+  <MESES><FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Proyecto 1\Proyecto1\Proyecto1\main.asm</FILE><LINE>425</LINE></MESES>
+  <SALIR_CUENTA_A><FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Proyecto 1\Proyecto1\Proyecto1\main.asm</FILE><LINE>420</LINE></SALIR_CUENTA_A>
+  <HORA_24_A><FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Proyecto 1\Proyecto1\Proyecto1\main.asm</FILE><LINE>412</LINE></HORA_24_A>
+  <MES2><FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Proyecto 1\Proyecto1\Proyecto1\main.asm</FILE><LINE>431</LINE></MES2>
+  <MES31><FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Proyecto 1\Proyecto1\Proyecto1\main.asm</FILE><LINE>546</LINE></MES31>
+  <SALIR_MESES><FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Proyecto 1\Proyecto1\Proyecto1\main.asm</FILE><LINE>509</LINE></SALIR_MESES>
+  <MES3><FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Proyecto 1\Proyecto1\Proyecto1\main.asm</FILE><LINE>437</LINE></MES3>
+  <MES28><FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Proyecto 1\Proyecto1\Proyecto1\main.asm</FILE><LINE>580</LINE></MES28>
+  <MES4><FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Proyecto 1\Proyecto1\Proyecto1\main.asm</FILE><LINE>443</LINE></MES4>
+  <MES5><FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Proyecto 1\Proyecto1\Proyecto1\main.asm</FILE><LINE>449</LINE></MES5>
+  <MES30><FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Proyecto 1\Proyecto1\Proyecto1\main.asm</FILE><LINE>513</LINE></MES30>
+  <MES6><FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Proyecto 1\Proyecto1\Proyecto1\main.asm</FILE><LINE>455</LINE></MES6>
+  <MES7><FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Proyecto 1\Proyecto1\Proyecto1\main.asm</FILE><LINE>461</LINE></MES7>
+  <MES8><FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Proyecto 1\Proyecto1\Proyecto1\main.asm</FILE><LINE>467</LINE></MES8>
+  <MES9><FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Proyecto 1\Proyecto1\Proyecto1\main.asm</FILE><LINE>473</LINE></MES9>
+  <MES10><FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Proyecto 1\Proyecto1\Proyecto1\main.asm</FILE><LINE>479</LINE></MES10>
+  <MES11><FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Proyecto 1\Proyecto1\Proyecto1\main.asm</FILE><LINE>485</LINE></MES11>
+  <MES12><FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Proyecto 1\Proyecto1\Proyecto1\main.asm</FILE><LINE>491</LINE></MES12>
+  <MESS><FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Proyecto 1\Proyecto1\Proyecto1\main.asm</FILE><LINE>497</LINE></MESS>
+  <M30><FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Proyecto 1\Proyecto1\Proyecto1\main.asm</FILE><LINE>533</LINE></M30>
+  <S30><FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Proyecto 1\Proyecto1\Proyecto1\main.asm</FILE><LINE>526</LINE></S30>
+  <SM30><FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Proyecto 1\Proyecto1\Proyecto1\main.asm</FILE><LINE>542</LINE></SM30>
+  <M31><FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Proyecto 1\Proyecto1\Proyecto1\main.asm</FILE><LINE>567</LINE></M31>
+  <S31><FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Proyecto 1\Proyecto1\Proyecto1\main.asm</FILE><LINE>558</LINE></S31>
+  <SM31><FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Proyecto 1\Proyecto1\Proyecto1\main.asm</FILE><LINE>576</LINE></SM31>
+  <M28><FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Proyecto 1\Proyecto1\Proyecto1\main.asm</FILE><LINE>593</LINE></M28>
+  <SM28><FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Proyecto 1\Proyecto1\Proyecto1\main.asm</FILE><LINE>602</LINE></SM28>
+  <MODO><FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Proyecto 1\Proyecto1\Proyecto1\main.asm</FILE><LINE>620</LINE></MODO>
+  <BOTON2><FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Proyecto 1\Proyecto1\Proyecto1\main.asm</FILE><LINE>628</LINE></BOTON2>
+  <BOTON3><FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Proyecto 1\Proyecto1\Proyecto1\main.asm</FILE><LINE>661</LINE></BOTON3>
+  <SALIR_PCINT0><FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Proyecto 1\Proyecto1\Proyecto1\main.asm</FILE><LINE>672</LINE></SALIR_PCINT0>
+  <ESTADO_INCIAL><FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Proyecto 1\Proyecto1\Proyecto1\main.asm</FILE><LINE>668</LINE></ESTADO_INCIAL>
+  <SB2><FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Proyecto 1\Proyecto1\Proyecto1\main.asm</FILE><LINE>633</LINE></SB2>
+  <SB22><FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Proyecto 1\Proyecto1\Proyecto1\main.asm</FILE><LINE>652</LINE></SB22>
+  <SSSS><FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Proyecto 1\Proyecto1\Proyecto1\main.asm</FILE><LINE>642</LINE></SSSS>
+  <SSS><FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Proyecto 1\Proyecto1\Proyecto1\main.asm</FILE><LINE>650</LINE></SSS>
+  <SB222><FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Proyecto 1\Proyecto1\Proyecto1\main.asm</FILE><LINE>657</LINE></SB222>
+  <SB3><FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Proyecto 1\Proyecto1\Proyecto1\main.asm</FILE><LINE>665</LINE></SB3>
+  <PARPADEO><FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Proyecto 1\Proyecto1\Proyecto1\main.asm</FILE><LINE>696</LINE></PARPADEO>
+  <PARPADEO1><FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Proyecto 1\Proyecto1\Proyecto1\main.asm</FILE><LINE>698</LINE></PARPADEO1>
+  <DOS><FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Proyecto 1\Proyecto1\Proyecto1\main.asm</FILE><LINE>709</LINE></DOS>
+  <UNO><FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Proyecto 1\Proyecto1\Proyecto1\main.asm</FILE><LINE>743</LINE></UNO>
+  <TRES><FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Proyecto 1\Proyecto1\Proyecto1\main.asm</FILE><LINE>719</LINE></TRES>
+  <CUATRO><FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Proyecto 1\Proyecto1\Proyecto1\main.asm</FILE><LINE>729</LINE></CUATRO>
+  <ZERO><FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Proyecto 1\Proyecto1\Proyecto1\main.asm</FILE><LINE>741</LINE></ZERO>
+  <SALIR_T2><FILE>C:\Users\jaidy\OneDrive\Documentos\UVG\Quinto Ciclo\Microcontroladores\Proyecto 1\Proyecto1\Proyecto1\main.asm</FILE><LINE>762</LINE></SALIR_T2>
+ </LABELS>
+</ASSEMBLER_INFO>
