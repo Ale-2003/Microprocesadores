@@ -11,19 +11,36 @@
 #include <util/delay.h>
 #include <avr/interrupt.h>
 
-int CONT = 0;
+uint8_t CONT = 0;
+uint8_t C1 = 0;
+uint8_t D1 = 0;
+uint8_t D2 = 0;
+uint8_t DISPLAY[16] = {63, 6, 91, 79, 102, 109, 125, 7, 127, 111, 119, 124, 57, 94, 121, 113};
 
+void initADC(void);
+void initTimer0(void);
 void setup(void);
 void buton(void);
 
-int main(void){
+int main(void)
+{
+	cli();
 	setup();	
-     while (1) {
+	initADC();
+	initTimer0();
+	sei();
+     while (1) 
+    {
 		//FUNCION DE BOTON
 		buton();
+		//COMPARACION ENTRE CONTADOR Y ADC
+		if (CONT == ADCH){
+			PORTC |= (1 << PORTC5); //SI SON IGUALES
+		}else{
+			PORTC &=~(1 << PORTC5);	//SI NO SON IGUALES
+		}
     }
 }
-
 
 void setup(void){
 	UCSR0B = 0;		// DESABILITA TX Y RX
@@ -37,6 +54,29 @@ void setup(void){
 	PORTD = 0;
 	PORTC |= (1 << PORTC3);
 	PORTC &=~(1 << PORTC4);
+}
+
+void initADC(void){
+	ADMUX = 0;					// ADC0
+	ADMUX |= (1 << REFS0);		// VREF = AVCC
+	ADMUX &= ~(1 << REFS1);		// VREF = AVCC
+	ADMUX |= (1 << ADLAR);		// JUSTIFICACION A LA DERECHA
+	
+	ADCSRA = 0;
+	ADCSRA |= (1 << ADEN);		// ENCIENDER EL ADC
+	ADCSRA |= (1 << ADIE);		// HABILITAR ISR ADC
+	ADCSRA |= (1 << ADPS0);		
+	ADCSRA |= (1 << ADPS1);		
+	ADCSRA |= (1 << ADPS2);		// PRESCALES 128 -> 16M = 125kHz
+	
+	DIDR0 |= (1 << ADC0D);		// DESABILITAR LA ENTRADA DIGITAL PC0
+}
+
+void initTimer0(void){
+	TCCR0A = 0;		//MODO NORMAL
+	TCCR0B = 5;		//PRESCALER
+	TIMSK0 = 1;		//HABILITA TOIE0
+	TCNT0 = 99;		//VALOR INICIAL
 }
 
 void buton(void){
@@ -54,3 +94,24 @@ void buton(void){
 	}
 	PORTB = CONT;	
 }
+
+ISR(ADC_vect){
+	D1 = (ADCH & 15);		//NIBLE BAJO
+	D2 = (ADCH & 240);	
+	D2 = D2 >> 4;			//NIBLE BAJO
+	ADCSRA |= (1 << ADIF);	//LIMPIA LA BANDERA
+}
+
+ISR(TIMER0_OVF_vect){	
+    ADCSRA |= (1 << ADSC);			//INICIA EL ADC
+	
+	PORTC ^= (1 << PORTC3);			//CAMBIA EL VALOR PC3
+	PORTC ^= (1 << PORTC4);			//CAMBIA EL VALOR PC4
+	if ((PORTC & (1 << PINC3)) == 8){
+		PORTD = DISPLAY[D1];		//DISPLAY 1
+	}else{
+		PORTD = DISPLAY[D2];		//DISPLAY 2
+	}
+	TCNT0 = 99;						//VALOR INICIAL
+}
+	
