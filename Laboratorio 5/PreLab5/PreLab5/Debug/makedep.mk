@@ -8,3 +8,7 @@ main.c
 
 PWM\PWM0.c
 
+PWM\PWM1.c
+
+PWM\PWM2.c
+
