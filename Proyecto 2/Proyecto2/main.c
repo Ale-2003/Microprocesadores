@@ -1,9 +1,14 @@
-/*
+//********************************************************************************
+/*;Universidad del Valle de Guatemala
+;IE2023: Programacion de microcontroladores
+;Autor: Alejandra Marcos
  * Proyecto2.c
  *
  * Created: 5/05/2024 10:37:56
  * Author : jaidy
  */ 
+//********************************************************************************
+
 // LIBRERIAS
 #define F_CPU 16000000UL
 #include <avr/io.h>
@@ -41,48 +46,46 @@ void Cominucacion(void);
 void Escritura(void);
 void Lectura(void);
 
-int main(void)
-{
+int main(void){
 	cli();
 	DDRB = 255;
 	DDRD |= (1 << DDD4)|(1 << DDD7);
-	initPinChange0(rising_edge);
-	initPinChange1(rising_edge);
-	initPWM0A(no_invertido, 1024);
-	updateDutyCA(22);
-	initPWM0B(no_invertido, 1024);
-	updateDutyCB(22);
-	initPWM1A(no_invertido,8,39999);
-	updateDutyCA1(2800);
-	initPWM1B(no_invertido,8,39999);
-	updateDutyCB1(2800);
-	initADC();
-	initUART(fast, 9600);
-	EEPROM_write(1, (5));
-	EEPROM_write(2, (0));
-	EEPROM_write(3, (5));
-	EEPROM_write(4, (0));
+	initPinChange0(rising_edge);		//INTERRUPCION EXTERNA PD2 FLANCO DE BAJADA
+	initPinChange1(rising_edge);		//INTERRUPCION ECTERNA PD3 FLANCO DE BAJADA
+	initPWM0A(no_invertido, 1024);		//PWM EN MODO FAST NO INVERTIDO CON 16MS
+	updateDutyCA(22);					//ANGULO INICIAL DE 90°
+	initPWM0B(no_invertido, 1024);		//PWM EN MODO FAST NO INVERTIDO CON 16MS
+	updateDutyCB(22);					//ANGULO INICIAL DE 90°
+	initPWM1A(no_invertido,8,39999);	//PWM EN MODO FAST NO INVERTIDO CON 20MS
+	updateDutyCA1(2800);				//ANGULO INICIAL DE 90°
+	initPWM1B(no_invertido,8,39999);	//PWM EN MODO FAST NO INVERTIDO CON 20MS
+	updateDutyCB1(2800);				//ANGULO INICIAL DE 90°
+	initADC();							//CONFIGURACION DEL ADC
+	initUART(fast, 9600);				//CONFIGURACION DEL UART EN MODO FAST A 9600
+	EEPROM_write(1, (5));				//POSICION 1 EN MEMORIA
+	EEPROM_write(2, (0));				//POSICION 1 EN MEMORIA
+	EEPROM_write(3, (5));				//POSICION 1 EN MEMORIA
+	EEPROM_write(4, (0));				//POSICION 1 EN MEMORIA	
 	
-	EEPROM_write(5, (0));
-	EEPROM_write(6, (5));
-	EEPROM_write(7, (5));
-	EEPROM_write(8, (0));
+	EEPROM_write(5, (0));				//POSICION 2 EN MEMORIA
+	EEPROM_write(6, (5));				//POSICION 2 EN MEMORIA				
+	EEPROM_write(7, (5));				//POSICION 2 EN MEMORIA
+	EEPROM_write(8, (0));				//POSICION 2 EN MEMORIA
 	
-	EEPROM_write(11, (0));
-	EEPROM_write(12, (0));
-	EEPROM_write(13, (0));
-	EEPROM_write(14, (5));
+	EEPROM_write(11, (0));				//POSICION 3 EN MEMORIA
+	EEPROM_write(12, (0));				//POSICION 3 EN MEMORIA
+	EEPROM_write(13, (0));				//POSICION 3 EN MEMORIA
+	EEPROM_write(14, (5));				//POSICION 3 EN MEMORIA
 	READ = 0;
 	STATE = 0;
 	sei();
-    while (1) {	
-		//STATE = STATE;	
+    while (1) {		
 		switch (STATE){
-			case 0: Manual(); NEXT_STATE = 1; break;
-			case 1: Cominucacion(); NEXT_STATE = 2; break;
-			case 2: Escritura(); NEXT_STATE = 3; break;
-			case 3: Lectura(); NEXT_STATE = 0; break;
-			default: STATE = 0; break;
+			case 0: Manual(); NEXT_STATE = 1; break;		//MODO MANUAL
+			case 1: Cominucacion(); NEXT_STATE = 2; break;	//MODO UART
+			case 2: Escritura(); NEXT_STATE = 3; break;		//MODO ESCRITURA
+			case 3: Lectura(); NEXT_STATE = 0; break;		//MODO LECTURA
+			default: STATE = 0; break;	
 		}
 			
     }
@@ -92,10 +95,10 @@ void Manual(void){
 	PORTD &=~ (1<< PORTD4);
 	PORTD &=~ (1<< PORTD7);
 	PORTB &=~ (1<< PORTB0);
-	V1 = (ADC_CONVERT(0)/1023.00)*5.00;
-	V2 = (ADC_CONVERT(1)/1023.00)*5.00;
-	V4 = (ADC_CONVERT(2)/1023.00)*5.00;
-	V3 = (ADC_CONVERT(3)/1023.00)*5.00;	
+	V1 = (ADC_CONVERT(0)/1023.00)*5.00;	//LEE EL VALOR DEL ADC0 Y LO CONVIERTE A VOLTAJE
+	V2 = (ADC_CONVERT(1)/1023.00)*5.00; //LEE EL VALOR DEL ADC1 Y LO CONVIERTE A VOLTAJE
+	V4 = (ADC_CONVERT(2)/1023.00)*5.00;	//LEE EL VALOR DEL ADC2 Y LO CONVIERTE A VOLTAJE
+	V3 = (ADC_CONVERT(3)/1023.00)*5.00;	//LEE EL VALOR DEL ADC3 Y LO CONVIERTE A VOLTAJE
 }
 
 void Cominucacion(void){
@@ -103,26 +106,24 @@ void Cominucacion(void){
 	PORTD &=~ (1<< PORTD7);
 	PORTB &=~ (1<< PORTB0);
 	txt_write_UART("\n¿Que deseas hacer?\n");
-	/*txt_write_UART("1. Ojos Arriba\n2. Ojos Abajo\n3. Ojos Izquierda\n4. Ojos Derecha\n");
-	txt_write_UART("5. Ceja Izquierda Arriba\n6. Ceja Izquierda Abajo\n7. Ceja Derecha Arriba\n8. Ceja Derecha Abajo\n");*/
 	while (flag == 0);
 	
 	switch (bufferRX){
-		case '1': updateDutyCA(26); flag = 0; break;
-		case '2': updateDutyCA(18); flag = 0; break;
-		case '3': updateDutyCB(28); flag = 0; break;
-		case '4': updateDutyCB(15); flag = 0; break;
-		case '5': updateDutyCA1(3400); flag = 0; break;
-		case '6': updateDutyCA1(2200); flag = 0; break;
-		case '7': updateDutyCB1(2200); flag = 0; break;
-		case '8': updateDutyCB1(3400); flag = 0; break;
-		case '9': updateDutyCA(22); updateDutyCB(22); flag = 0; break;
-		case 'A': updateDutyCA1(2800); updateDutyCB1(2800); flag = 0; break;
+		case '1': updateDutyCA(26); flag = 0; break; //SI BUFFERRX ES 1, ANCUTALIZA PWM0 A
+		case '2': updateDutyCA(18); flag = 0; break; //SI BUFFERRX ES 2, ANCUTALIZA PWM0 A
+		case '3': updateDutyCB(28); flag = 0; break; //SI BUFFERRX ES 3, ANCUTALIZA PWM0 B
+		case '4': updateDutyCB(15); flag = 0; break; //SI BUFFERRX ES 4, ANCUTALIZA PWM0 B
+		case '5': updateDutyCA1(3400); flag = 0; break; //SI BUFFERRX ES 5, ANCUTALIZA PWM1 A
+		case '6': updateDutyCA1(2200); flag = 0; break; //SI BUFFERRX ES 6, ANCUTALIZA PWM1 A
+		case '7': updateDutyCB1(2200); flag = 0; break; //SI BUFFERRX ES 7, ANCUTALIZA PWM1 B
+		case '8': updateDutyCB1(3400); flag = 0; break; //SI BUFFERRX ES 8, ANCUTALIZA PWM1 B
+		case '9': updateDutyCA(22); updateDutyCB(22); flag = 0; break; //PWM0 POSICION NORMAL
+		case 'A': updateDutyCA1(2800); updateDutyCB1(2800); flag = 0; break; //PWM1 POSICION NORMAL
 		
-		case 'B': READ = 0; Lectura(); flag = 0; break;
-		case 'C': READ = 1; Lectura(); flag = 0; break;
-		case 'D': READ = 2; Lectura(); flag = 0; break;
-		case 'E': READ = 3; Lectura(); flag = 0; break;
+		case 'B': READ = 0; Lectura(); flag = 0; break; //SI BUFFERRX ES B, REPRODUCR POSICION 1
+		case 'C': READ = 1; Lectura(); flag = 0; break; //SI BUFFERRX ES C, REPRODUCR POSICION 2
+		case 'D': READ = 2; Lectura(); flag = 0; break; //SI BUFFERRX ES D, REPRODUCR POSICION 3
+		case 'E': READ = 3; Lectura(); flag = 0; break; //SI BUFFERRX ES E, REPRODUCR POSICION 4
 		default: flag = 0; break;
 	}
 }
@@ -131,10 +132,10 @@ void Escritura(void){
 	PORTD &=~ (1<< PORTD4);
 	PORTD |= (1<< PORTD7);
 	PORTB &=~ (1<< PORTB0);
-	V1 = (ADC_CONVERT(0)/1023.00)*5.00;
-	V2 = (ADC_CONVERT(1)/1023.00)*5.00;
-	V4 = (ADC_CONVERT(2)/1023.00)*5.00;
-	V3 = (ADC_CONVERT(3)/1023.00)*5.00;
+	V1 = (ADC_CONVERT(0)/1023.00)*5.00;	//LEE EL VALOR DEL ADC0 Y LO CONVIERTE A VOLTAJE
+	V2 = (ADC_CONVERT(1)/1023.00)*5.00; //LEE EL VALOR DEL ADC1 Y LO CONVIERTE A VOLTAJE
+	V4 = (ADC_CONVERT(2)/1023.00)*5.00; //LEE EL VALOR DEL ADC2 Y LO CONVIERTE A VOLTAJE
+	V3 = (ADC_CONVERT(3)/1023.00)*5.00; //LEE EL VALOR DEL ADC3 Y LO CONVIERTE A VOLTAJE
 }
 
 void Lectura (void){
@@ -143,25 +144,25 @@ void Lectura (void){
 	PORTB |= (1<< PORTB0);
 	
 	if (READ == 0){
-		D1 = (EEPROM_read(10));
+		D1 = (EEPROM_read(10));	//REPRODUCE LA POSICION 1
 		D2 = (EEPROM_read(20));
 		D3 = (EEPROM_read(30));
 		D4 = (EEPROM_read(40));
 		NEXT_READ = 1;
 	} else if (READ == 1){
-		D1 = (EEPROM_read(1));
+		D1 = (EEPROM_read(1));	//REPRODUCE LA POSICION 2
 		D2 = (EEPROM_read(2));
 		D3 = (EEPROM_read(3));
 		D4 = (EEPROM_read(4));
 		NEXT_READ = 2;
 	} else if (READ == 2){
-		D1 = (EEPROM_read(5));
+		D1 = (EEPROM_read(5)); 	//REPRODUCE LA POSICION 3
 		D2 = (EEPROM_read(6));
 		D3 = (EEPROM_read(7));
 		D4 = (EEPROM_read(8));
 		NEXT_READ = 3;
 	} else if (READ == 3){
-		D1 = (EEPROM_read(11));
+		D1 = (EEPROM_read(11)); //REPRODUCE LA POSICION 4
 		D2 = (EEPROM_read(12));
 		D3 = (EEPROM_read(13));
 		D4 = (EEPROM_read(14));
@@ -227,30 +228,30 @@ ISR (ADC_vect){
 
 ISR (INT0_vect){
 	_delay_ms(200);
-	if (STATE == 1) {
-		flag = 1;
+	if (STATE == 1) { //SI SE ESTA EN EL ESTADO COMUNICACION SERIAL CUANDO SE PRESIONA
+		flag = 1;	  //ACTIVA LA BANDER PARA SALIR DEL WHILE QUE ESPERA UN DATO
 	}
 	
-	STATE = NEXT_STATE;
+	STATE = NEXT_STATE; //EL ESTADO TOMA EL VALOR DEL ESTADO SIGUIENTE AL SER PRESIONADO
 }
 
 ISR (INT1_vect){
 	_delay_ms(100);
 	if (STATE == 2){
 		PORTB |= (1<< PORTB3);
-		EEPROM_write(10, (V1));
-		EEPROM_write(20, (V2));
+		EEPROM_write(10, (V1));	//SI SE ESTA EN EL ESTADO DE ESCRITURA CUANDO SE PRESIONA
+		EEPROM_write(20, (V2)); //GUARDA EN ESTAS DIRECCIONES LOS VOLTAJES QUE LEE EL ADC
 		EEPROM_write(30, (V3));
 		EEPROM_write(40, (V4));
 		PORTB &=~ (1<< PORTB3);
 	}
-	if (STATE == 3)	{
-		READ = NEXT_READ; 
+	if (STATE == 3)	{			//SI SE ESTA EN EL ESTADO DE LECTRUA CUANDO SE PRESIONA
+		READ = NEXT_READ;		//EL ESTADO DE MEMORIA TOMA EL VALOR SIGUIENTE EN MEMORIA
 	}
 }
 
 
-ISR (USART_RX_vect){
-	flag = 1;
+ISR (USART_RX_vect){			//CADA VEZ QUE EL RX DETECTE UN VALOR, SE ACTIVA LA BANDERA
+	flag = 1;					//Y EL VALOR SE GUARDA TEMPORALMENTE EN BUFFERRX
 	bufferRX = UDR0;	
 }

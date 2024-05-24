@@ -23,11 +23,11 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
   9 .debug_frame  0000038c  00000000  00000000  000045d4  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    000005dd  00000000  00000000  00004960  2**0
+ 10 .debug_str    00000634  00000000  00000000  00004960  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    00000755  00000000  00000000  00004f3d  2**0
+ 11 .debug_loc    00000755  00000000  00000000  00004f94  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000118  00000000  00000000  00005692  2**0
+ 12 .debug_ranges 00000118  00000000  00000000  000056e9  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -286,7 +286,7 @@ void Manual(void){
      188:	85 b1       	in	r24, 0x05	; 5
      18a:	8e 7f       	andi	r24, 0xFE	; 254
      18c:	85 b9       	out	0x05, r24	; 5
-	V1 = (ADC_CONVERT(0)/1023.00)*5.00;
+	V1 = (ADC_CONVERT(0)/1023.00)*5.00;	//LEE EL VALOR DEL ADC0 Y LO CONVIERTE A VOLTAJE
      18e:	80 e0       	ldi	r24, 0x00	; 0
      190:	0e 94 95 00 	call	0x12a	; 0x12a <ADC_CONVERT>
      194:	bc 01       	movw	r22, r24
@@ -307,7 +307,7 @@ void Manual(void){
      1ba:	70 93 29 01 	sts	0x0129, r23	; 0x800129 <V1+0x1>
      1be:	80 93 2a 01 	sts	0x012A, r24	; 0x80012a <V1+0x2>
      1c2:	90 93 2b 01 	sts	0x012B, r25	; 0x80012b <V1+0x3>
-	V2 = (ADC_CONVERT(1)/1023.00)*5.00;
+	V2 = (ADC_CONVERT(1)/1023.00)*5.00; //LEE EL VALOR DEL ADC1 Y LO CONVIERTE A VOLTAJE
      1c6:	81 e0       	ldi	r24, 0x01	; 1
      1c8:	0e 94 95 00 	call	0x12a	; 0x12a <ADC_CONVERT>
      1cc:	bc 01       	movw	r22, r24
@@ -328,7 +328,7 @@ void Manual(void){
      1f2:	70 93 25 01 	sts	0x0125, r23	; 0x800125 <V2+0x1>
      1f6:	80 93 26 01 	sts	0x0126, r24	; 0x800126 <V2+0x2>
      1fa:	90 93 27 01 	sts	0x0127, r25	; 0x800127 <V2+0x3>
-	V4 = (ADC_CONVERT(2)/1023.00)*5.00;
+	V4 = (ADC_CONVERT(2)/1023.00)*5.00;	//LEE EL VALOR DEL ADC2 Y LO CONVIERTE A VOLTAJE
      1fe:	82 e0       	ldi	r24, 0x02	; 2
      200:	0e 94 95 00 	call	0x12a	; 0x12a <ADC_CONVERT>
      204:	bc 01       	movw	r22, r24
@@ -349,7 +349,7 @@ void Manual(void){
      22a:	70 93 1d 01 	sts	0x011D, r23	; 0x80011d <V4+0x1>
      22e:	80 93 1e 01 	sts	0x011E, r24	; 0x80011e <V4+0x2>
      232:	90 93 1f 01 	sts	0x011F, r25	; 0x80011f <V4+0x3>
-	V3 = (ADC_CONVERT(3)/1023.00)*5.00;	
+	V3 = (ADC_CONVERT(3)/1023.00)*5.00;	//LEE EL VALOR DEL ADC3 Y LO CONVIERTE A VOLTAJE
      236:	83 e0       	ldi	r24, 0x03	; 3
      238:	0e 94 95 00 	call	0x12a	; 0x12a <ADC_CONVERT>
      23c:	bc 01       	movw	r22, r24
@@ -390,7 +390,7 @@ void Escritura(void){
      27c:	85 b1       	in	r24, 0x05	; 5
      27e:	8e 7f       	andi	r24, 0xFE	; 254
      280:	85 b9       	out	0x05, r24	; 5
-	V1 = (ADC_CONVERT(0)/1023.00)*5.00;
+	V1 = (ADC_CONVERT(0)/1023.00)*5.00;	//LEE EL VALOR DEL ADC0 Y LO CONVIERTE A VOLTAJE
      282:	80 e0       	ldi	r24, 0x00	; 0
      284:	0e 94 95 00 	call	0x12a	; 0x12a <ADC_CONVERT>
      288:	bc 01       	movw	r22, r24
@@ -411,7 +411,7 @@ void Escritura(void){
      2ae:	70 93 29 01 	sts	0x0129, r23	; 0x800129 <V1+0x1>
      2b2:	80 93 2a 01 	sts	0x012A, r24	; 0x80012a <V1+0x2>
      2b6:	90 93 2b 01 	sts	0x012B, r25	; 0x80012b <V1+0x3>
-	V2 = (ADC_CONVERT(1)/1023.00)*5.00;
+	V2 = (ADC_CONVERT(1)/1023.00)*5.00; //LEE EL VALOR DEL ADC1 Y LO CONVIERTE A VOLTAJE
      2ba:	81 e0       	ldi	r24, 0x01	; 1
      2bc:	0e 94 95 00 	call	0x12a	; 0x12a <ADC_CONVERT>
      2c0:	bc 01       	movw	r22, r24
@@ -432,7 +432,7 @@ void Escritura(void){
      2e6:	70 93 25 01 	sts	0x0125, r23	; 0x800125 <V2+0x1>
      2ea:	80 93 26 01 	sts	0x0126, r24	; 0x800126 <V2+0x2>
      2ee:	90 93 27 01 	sts	0x0127, r25	; 0x800127 <V2+0x3>
-	V4 = (ADC_CONVERT(2)/1023.00)*5.00;
+	V4 = (ADC_CONVERT(2)/1023.00)*5.00; //LEE EL VALOR DEL ADC2 Y LO CONVIERTE A VOLTAJE
      2f2:	82 e0       	ldi	r24, 0x02	; 2
      2f4:	0e 94 95 00 	call	0x12a	; 0x12a <ADC_CONVERT>
      2f8:	bc 01       	movw	r22, r24
@@ -453,7 +453,7 @@ void Escritura(void){
      31e:	70 93 1d 01 	sts	0x011D, r23	; 0x80011d <V4+0x1>
      322:	80 93 1e 01 	sts	0x011E, r24	; 0x80011e <V4+0x2>
      326:	90 93 1f 01 	sts	0x011F, r25	; 0x80011f <V4+0x3>
-	V3 = (ADC_CONVERT(3)/1023.00)*5.00;
+	V3 = (ADC_CONVERT(3)/1023.00)*5.00; //LEE EL VALOR DEL ADC3 Y LO CONVIERTE A VOLTAJE
      32a:	83 e0       	ldi	r24, 0x03	; 3
      32c:	0e 94 95 00 	call	0x12a	; 0x12a <ADC_CONVERT>
      330:	bc 01       	movw	r22, r24
@@ -501,7 +501,7 @@ void Lectura (void){
      37e:	80 91 2d 01 	lds	r24, 0x012D	; 0x80012d <READ>
      382:	81 11       	cpse	r24, r1
      384:	1c c0       	rjmp	.+56     	; 0x3be <Lectura+0x5a>
-		D1 = (EEPROM_read(10));
+		D1 = (EEPROM_read(10));	//REPRODUCE LA POSICION 1
      386:	8a e0       	ldi	r24, 0x0A	; 10
      388:	90 e0       	ldi	r25, 0x00	; 0
      38a:	0e 94 b5 00 	call	0x16a	; 0x16a <EEPROM_read>
@@ -528,7 +528,7 @@ void Lectura (void){
 	} else if (READ == 1){
      3be:	81 30       	cpi	r24, 0x01	; 1
      3c0:	e1 f4       	brne	.+56     	; 0x3fa <Lectura+0x96>
-		D1 = (EEPROM_read(1));
+		D1 = (EEPROM_read(1));	//REPRODUCE LA POSICION 2
      3c2:	81 e0       	ldi	r24, 0x01	; 1
      3c4:	90 e0       	ldi	r25, 0x00	; 0
      3c6:	0e 94 b5 00 	call	0x16a	; 0x16a <EEPROM_read>
@@ -555,7 +555,7 @@ void Lectura (void){
 	} else if (READ == 2){
      3fa:	82 30       	cpi	r24, 0x02	; 2
      3fc:	e1 f4       	brne	.+56     	; 0x436 <__EEPROM_REGION_LENGTH__+0x36>
-		D1 = (EEPROM_read(5));
+		D1 = (EEPROM_read(5)); 	//REPRODUCE LA POSICION 3
      3fe:	85 e0       	ldi	r24, 0x05	; 5
      400:	90 e0       	ldi	r25, 0x00	; 0
      402:	0e 94 b5 00 	call	0x16a	; 0x16a <EEPROM_read>
@@ -582,7 +582,7 @@ void Lectura (void){
 	} else if (READ == 3){
      436:	83 30       	cpi	r24, 0x03	; 3
      438:	d1 f4       	brne	.+52     	; 0x46e <__EEPROM_REGION_LENGTH__+0x6e>
-		D1 = (EEPROM_read(11));
+		D1 = (EEPROM_read(11)); //REPRODUCE LA POSICION 4
      43a:	8b e0       	ldi	r24, 0x0B	; 11
      43c:	90 e0       	ldi	r25, 0x00	; 0
      43e:	0e 94 b5 00 	call	0x16a	; 0x16a <EEPROM_read>
@@ -769,8 +769,8 @@ void Lectura (void){
      5b2:	08 95       	ret
 
 000005b4 <Cominucacion>:
-	V4 = (ADC_CONVERT(2)/1023.00)*5.00;
-	V3 = (ADC_CONVERT(3)/1023.00)*5.00;	
+	V4 = (ADC_CONVERT(2)/1023.00)*5.00;	//LEE EL VALOR DEL ADC2 Y LO CONVIERTE A VOLTAJE
+	V3 = (ADC_CONVERT(3)/1023.00)*5.00;	//LEE EL VALOR DEL ADC3 Y LO CONVIERTE A VOLTAJE
 }
 
 void Cominucacion(void){
@@ -790,8 +790,6 @@ void Cominucacion(void){
      5c6:	82 e0       	ldi	r24, 0x02	; 2
      5c8:	91 e0       	ldi	r25, 0x01	; 1
      5ca:	0e 94 b0 06 	call	0xd60	; 0xd60 <txt_write_UART>
-	/*txt_write_UART("1. Ojos Arriba\n2. Ojos Abajo\n3. Ojos Izquierda\n4. Ojos Derecha\n");
-	txt_write_UART("5. Ceja Izquierda Arriba\n6. Ceja Izquierda Abajo\n7. Ceja Derecha Arriba\n8. Ceja Derecha Abajo\n");*/
 	while (flag == 0);
      5ce:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <__DATA_REGION_ORIGIN__>
      5d2:	90 91 01 01 	lds	r25, 0x0101	; 0x800101 <__DATA_REGION_ORIGIN__+0x1>
@@ -811,59 +809,59 @@ void Cominucacion(void){
      5ee:	ec 5c       	subi	r30, 0xCC	; 204
      5f0:	ff 4f       	sbci	r31, 0xFF	; 255
      5f2:	0c 94 87 08 	jmp	0x110e	; 0x110e <__tablejump2__>
-		case '1': updateDutyCA(26); flag = 0; break;
+		case '1': updateDutyCA(26); flag = 0; break; //SI BUFFERRX ES 1, ANCUTALIZA PWM0 A
      5f6:	8a e1       	ldi	r24, 0x1A	; 26
      5f8:	0e 94 10 06 	call	0xc20	; 0xc20 <updateDutyCA>
      5fc:	10 92 01 01 	sts	0x0101, r1	; 0x800101 <__DATA_REGION_ORIGIN__+0x1>
      600:	10 92 00 01 	sts	0x0100, r1	; 0x800100 <__DATA_REGION_ORIGIN__>
      604:	08 95       	ret
-		case '2': updateDutyCA(18); flag = 0; break;
+		case '2': updateDutyCA(18); flag = 0; break; //SI BUFFERRX ES 2, ANCUTALIZA PWM0 A
      606:	82 e1       	ldi	r24, 0x12	; 18
      608:	0e 94 10 06 	call	0xc20	; 0xc20 <updateDutyCA>
      60c:	10 92 01 01 	sts	0x0101, r1	; 0x800101 <__DATA_REGION_ORIGIN__+0x1>
      610:	10 92 00 01 	sts	0x0100, r1	; 0x800100 <__DATA_REGION_ORIGIN__>
      614:	08 95       	ret
-		case '3': updateDutyCB(28); flag = 0; break;
+		case '3': updateDutyCB(28); flag = 0; break; //SI BUFFERRX ES 3, ANCUTALIZA PWM0 B
      616:	8c e1       	ldi	r24, 0x1C	; 28
      618:	0e 94 12 06 	call	0xc24	; 0xc24 <updateDutyCB>
      61c:	10 92 01 01 	sts	0x0101, r1	; 0x800101 <__DATA_REGION_ORIGIN__+0x1>
      620:	10 92 00 01 	sts	0x0100, r1	; 0x800100 <__DATA_REGION_ORIGIN__>
      624:	08 95       	ret
-		case '4': updateDutyCB(15); flag = 0; break;
+		case '4': updateDutyCB(15); flag = 0; break; //SI BUFFERRX ES 4, ANCUTALIZA PWM0 B
      626:	8f e0       	ldi	r24, 0x0F	; 15
      628:	0e 94 12 06 	call	0xc24	; 0xc24 <updateDutyCB>
      62c:	10 92 01 01 	sts	0x0101, r1	; 0x800101 <__DATA_REGION_ORIGIN__+0x1>
      630:	10 92 00 01 	sts	0x0100, r1	; 0x800100 <__DATA_REGION_ORIGIN__>
      634:	08 95       	ret
-		case '5': updateDutyCA1(3400); flag = 0; break;
+		case '5': updateDutyCA1(3400); flag = 0; break; //SI BUFFERRX ES 5, ANCUTALIZA PWM1 A
      636:	88 e4       	ldi	r24, 0x48	; 72
      638:	9d e0       	ldi	r25, 0x0D	; 13
      63a:	0e 94 6e 06 	call	0xcdc	; 0xcdc <updateDutyCA1>
      63e:	10 92 01 01 	sts	0x0101, r1	; 0x800101 <__DATA_REGION_ORIGIN__+0x1>
      642:	10 92 00 01 	sts	0x0100, r1	; 0x800100 <__DATA_REGION_ORIGIN__>
      646:	08 95       	ret
-		case '6': updateDutyCA1(2200); flag = 0; break;
+		case '6': updateDutyCA1(2200); flag = 0; break; //SI BUFFERRX ES 6, ANCUTALIZA PWM1 A
      648:	88 e9       	ldi	r24, 0x98	; 152
      64a:	98 e0       	ldi	r25, 0x08	; 8
      64c:	0e 94 6e 06 	call	0xcdc	; 0xcdc <updateDutyCA1>
      650:	10 92 01 01 	sts	0x0101, r1	; 0x800101 <__DATA_REGION_ORIGIN__+0x1>
      654:	10 92 00 01 	sts	0x0100, r1	; 0x800100 <__DATA_REGION_ORIGIN__>
      658:	08 95       	ret
-		case '7': updateDutyCB1(2200); flag = 0; break;
+		case '7': updateDutyCB1(2200); flag = 0; break; //SI BUFFERRX ES 7, ANCUTALIZA PWM1 B
      65a:	88 e9       	ldi	r24, 0x98	; 152
      65c:	98 e0       	ldi	r25, 0x08	; 8
      65e:	0e 94 73 06 	call	0xce6	; 0xce6 <updateDutyCB1>
      662:	10 92 01 01 	sts	0x0101, r1	; 0x800101 <__DATA_REGION_ORIGIN__+0x1>
      666:	10 92 00 01 	sts	0x0100, r1	; 0x800100 <__DATA_REGION_ORIGIN__>
      66a:	08 95       	ret
-		case '8': updateDutyCB1(3400); flag = 0; break;
+		case '8': updateDutyCB1(3400); flag = 0; break; //SI BUFFERRX ES 8, ANCUTALIZA PWM1 B
      66c:	88 e4       	ldi	r24, 0x48	; 72
      66e:	9d e0       	ldi	r25, 0x0D	; 13
      670:	0e 94 73 06 	call	0xce6	; 0xce6 <updateDutyCB1>
      674:	10 92 01 01 	sts	0x0101, r1	; 0x800101 <__DATA_REGION_ORIGIN__+0x1>
      678:	10 92 00 01 	sts	0x0100, r1	; 0x800100 <__DATA_REGION_ORIGIN__>
      67c:	08 95       	ret
-		case '9': updateDutyCA(22); updateDutyCB(22); flag = 0; break;
+		case '9': updateDutyCA(22); updateDutyCB(22); flag = 0; break; //PWM0 POSICION NORMAL
      67e:	86 e1       	ldi	r24, 0x16	; 22
      680:	0e 94 10 06 	call	0xc20	; 0xc20 <updateDutyCA>
      684:	86 e1       	ldi	r24, 0x16	; 22
@@ -871,7 +869,7 @@ void Cominucacion(void){
      68a:	10 92 01 01 	sts	0x0101, r1	; 0x800101 <__DATA_REGION_ORIGIN__+0x1>
      68e:	10 92 00 01 	sts	0x0100, r1	; 0x800100 <__DATA_REGION_ORIGIN__>
      692:	08 95       	ret
-		case 'A': updateDutyCA1(2800); updateDutyCB1(2800); flag = 0; break;
+		case 'A': updateDutyCA1(2800); updateDutyCB1(2800); flag = 0; break; //PWM1 POSICION NORMAL
      694:	80 ef       	ldi	r24, 0xF0	; 240
      696:	9a e0       	ldi	r25, 0x0A	; 10
      698:	0e 94 6e 06 	call	0xcdc	; 0xcdc <updateDutyCA1>
@@ -882,27 +880,27 @@ void Cominucacion(void){
      6a8:	10 92 00 01 	sts	0x0100, r1	; 0x800100 <__DATA_REGION_ORIGIN__>
      6ac:	08 95       	ret
 		
-		case 'B': READ = 0; Lectura(); flag = 0; break;
+		case 'B': READ = 0; Lectura(); flag = 0; break; //SI BUFFERRX ES B, REPRODUCR POSICION 1
      6ae:	10 92 2d 01 	sts	0x012D, r1	; 0x80012d <READ>
      6b2:	0e 94 b2 01 	call	0x364	; 0x364 <Lectura>
      6b6:	10 92 01 01 	sts	0x0101, r1	; 0x800101 <__DATA_REGION_ORIGIN__+0x1>
      6ba:	10 92 00 01 	sts	0x0100, r1	; 0x800100 <__DATA_REGION_ORIGIN__>
      6be:	08 95       	ret
-		case 'C': READ = 1; Lectura(); flag = 0; break;
+		case 'C': READ = 1; Lectura(); flag = 0; break; //SI BUFFERRX ES C, REPRODUCR POSICION 2
      6c0:	81 e0       	ldi	r24, 0x01	; 1
      6c2:	80 93 2d 01 	sts	0x012D, r24	; 0x80012d <READ>
      6c6:	0e 94 b2 01 	call	0x364	; 0x364 <Lectura>
      6ca:	10 92 01 01 	sts	0x0101, r1	; 0x800101 <__DATA_REGION_ORIGIN__+0x1>
      6ce:	10 92 00 01 	sts	0x0100, r1	; 0x800100 <__DATA_REGION_ORIGIN__>
      6d2:	08 95       	ret
-		case 'D': READ = 2; Lectura(); flag = 0; break;
+		case 'D': READ = 2; Lectura(); flag = 0; break; //SI BUFFERRX ES D, REPRODUCR POSICION 3
      6d4:	82 e0       	ldi	r24, 0x02	; 2
      6d6:	80 93 2d 01 	sts	0x012D, r24	; 0x80012d <READ>
      6da:	0e 94 b2 01 	call	0x364	; 0x364 <Lectura>
      6de:	10 92 01 01 	sts	0x0101, r1	; 0x800101 <__DATA_REGION_ORIGIN__+0x1>
      6e2:	10 92 00 01 	sts	0x0100, r1	; 0x800100 <__DATA_REGION_ORIGIN__>
      6e6:	08 95       	ret
-		case 'E': READ = 3; Lectura(); flag = 0; break;
+		case 'E': READ = 3; Lectura(); flag = 0; break; //SI BUFFERRX ES E, REPRODUCR POSICION 4
      6e8:	83 e0       	ldi	r24, 0x03	; 3
      6ea:	80 93 2d 01 	sts	0x012D, r24	; 0x80012d <READ>
      6ee:	0e 94 b2 01 	call	0x364	; 0x364 <Lectura>
@@ -915,11 +913,11 @@ void Cominucacion(void){
      704:	08 95       	ret
 
 00000706 <main>:
+void Cominucacion(void);
 void Escritura(void);
 void Lectura(void);
 
-int main(void)
-{
+int main(void){
 	cli();
      706:	f8 94       	cli
 	DDRB = 255;
@@ -929,115 +927,115 @@ int main(void)
      70c:	8a b1       	in	r24, 0x0a	; 10
      70e:	80 69       	ori	r24, 0x90	; 144
      710:	8a b9       	out	0x0a, r24	; 10
-	initPinChange0(rising_edge);
+	initPinChange0(rising_edge);		//INTERRUPCION EXTERNA PD2 FLANCO DE BAJADA
      712:	81 e0       	ldi	r24, 0x01	; 1
      714:	0e 94 a6 05 	call	0xb4c	; 0xb4c <initPinChange0>
-	initPinChange1(rising_edge);
+	initPinChange1(rising_edge);		//INTERRUPCION ECTERNA PD3 FLANCO DE BAJADA
      718:	81 e0       	ldi	r24, 0x01	; 1
      71a:	0e 94 bd 05 	call	0xb7a	; 0xb7a <initPinChange1>
-	initPWM0A(no_invertido, 1024);
+	initPWM0A(no_invertido, 1024);		//PWM EN MODO FAST NO INVERTIDO CON 16MS
      71e:	60 e0       	ldi	r22, 0x00	; 0
      720:	74 e0       	ldi	r23, 0x04	; 4
      722:	80 e0       	ldi	r24, 0x00	; 0
      724:	0e 94 d4 05 	call	0xba8	; 0xba8 <initPWM0A>
-	updateDutyCA(22);
+	updateDutyCA(22);					//ANGULO INICIAL DE 90°
      728:	86 e1       	ldi	r24, 0x16	; 22
      72a:	0e 94 10 06 	call	0xc20	; 0xc20 <updateDutyCA>
-	initPWM0B(no_invertido, 1024);
+	initPWM0B(no_invertido, 1024);		//PWM EN MODO FAST NO INVERTIDO CON 16MS
      72e:	60 e0       	ldi	r22, 0x00	; 0
      730:	74 e0       	ldi	r23, 0x04	; 4
      732:	80 e0       	ldi	r24, 0x00	; 0
      734:	0e 94 f6 05 	call	0xbec	; 0xbec <initPWM0B>
-	updateDutyCB(22);
+	updateDutyCB(22);					//ANGULO INICIAL DE 90°
      738:	86 e1       	ldi	r24, 0x16	; 22
      73a:	0e 94 12 06 	call	0xc24	; 0xc24 <updateDutyCB>
-	initPWM1A(no_invertido,8,39999);
+	initPWM1A(no_invertido,8,39999);	//PWM EN MODO FAST NO INVERTIDO CON 20MS
      73e:	4f e3       	ldi	r20, 0x3F	; 63
      740:	5c e9       	ldi	r21, 0x9C	; 156
      742:	68 e0       	ldi	r22, 0x08	; 8
      744:	70 e0       	ldi	r23, 0x00	; 0
      746:	80 e0       	ldi	r24, 0x00	; 0
      748:	0e 94 14 06 	call	0xc28	; 0xc28 <initPWM1A>
-	updateDutyCA1(2800);
+	updateDutyCA1(2800);				//ANGULO INICIAL DE 90°
      74c:	80 ef       	ldi	r24, 0xF0	; 240
      74e:	9a e0       	ldi	r25, 0x0A	; 10
      750:	0e 94 6e 06 	call	0xcdc	; 0xcdc <updateDutyCA1>
-	initPWM1B(no_invertido,8,39999);
+	initPWM1B(no_invertido,8,39999);	//PWM EN MODO FAST NO INVERTIDO CON 20MS
      754:	4f e3       	ldi	r20, 0x3F	; 63
      756:	5c e9       	ldi	r21, 0x9C	; 156
      758:	68 e0       	ldi	r22, 0x08	; 8
      75a:	70 e0       	ldi	r23, 0x00	; 0
      75c:	80 e0       	ldi	r24, 0x00	; 0
      75e:	0e 94 41 06 	call	0xc82	; 0xc82 <initPWM1B>
-	updateDutyCB1(2800);
+	updateDutyCB1(2800);				//ANGULO INICIAL DE 90°
      762:	80 ef       	ldi	r24, 0xF0	; 240
      764:	9a e0       	ldi	r25, 0x0A	; 10
      766:	0e 94 73 06 	call	0xce6	; 0xce6 <updateDutyCB1>
-	initADC();
+	initADC();							//CONFIGURACION DEL ADC
      76a:	0e 94 68 00 	call	0xd0	; 0xd0 <initADC>
-	initUART(fast, 9600);
+	initUART(fast, 9600);				//CONFIGURACION DEL UART EN MODO FAST A 9600
      76e:	60 e8       	ldi	r22, 0x80	; 128
      770:	75 e2       	ldi	r23, 0x25	; 37
      772:	81 e0       	ldi	r24, 0x01	; 1
      774:	0e 94 78 06 	call	0xcf0	; 0xcf0 <initUART>
-	EEPROM_write(1, (5));
+	EEPROM_write(1, (5));				//POSICION 1 EN MEMORIA
      778:	65 e0       	ldi	r22, 0x05	; 5
      77a:	81 e0       	ldi	r24, 0x01	; 1
      77c:	90 e0       	ldi	r25, 0x00	; 0
      77e:	0e 94 a9 00 	call	0x152	; 0x152 <EEPROM_write>
-	EEPROM_write(2, (0));
+	EEPROM_write(2, (0));				//POSICION 1 EN MEMORIA
      782:	60 e0       	ldi	r22, 0x00	; 0
      784:	82 e0       	ldi	r24, 0x02	; 2
      786:	90 e0       	ldi	r25, 0x00	; 0
      788:	0e 94 a9 00 	call	0x152	; 0x152 <EEPROM_write>
-	EEPROM_write(3, (5));
+	EEPROM_write(3, (5));				//POSICION 1 EN MEMORIA
      78c:	65 e0       	ldi	r22, 0x05	; 5
      78e:	83 e0       	ldi	r24, 0x03	; 3
      790:	90 e0       	ldi	r25, 0x00	; 0
      792:	0e 94 a9 00 	call	0x152	; 0x152 <EEPROM_write>
-	EEPROM_write(4, (0));
+	EEPROM_write(4, (0));				//POSICION 1 EN MEMORIA	
      796:	60 e0       	ldi	r22, 0x00	; 0
      798:	84 e0       	ldi	r24, 0x04	; 4
      79a:	90 e0       	ldi	r25, 0x00	; 0
      79c:	0e 94 a9 00 	call	0x152	; 0x152 <EEPROM_write>
 	
-	EEPROM_write(5, (0));
+	EEPROM_write(5, (0));				//POSICION 2 EN MEMORIA
      7a0:	60 e0       	ldi	r22, 0x00	; 0
      7a2:	85 e0       	ldi	r24, 0x05	; 5
      7a4:	90 e0       	ldi	r25, 0x00	; 0
      7a6:	0e 94 a9 00 	call	0x152	; 0x152 <EEPROM_write>
-	EEPROM_write(6, (5));
+	EEPROM_write(6, (5));				//POSICION 2 EN MEMORIA				
      7aa:	65 e0       	ldi	r22, 0x05	; 5
      7ac:	86 e0       	ldi	r24, 0x06	; 6
      7ae:	90 e0       	ldi	r25, 0x00	; 0
      7b0:	0e 94 a9 00 	call	0x152	; 0x152 <EEPROM_write>
-	EEPROM_write(7, (5));
+	EEPROM_write(7, (5));				//POSICION 2 EN MEMORIA
      7b4:	65 e0       	ldi	r22, 0x05	; 5
      7b6:	87 e0       	ldi	r24, 0x07	; 7
      7b8:	90 e0       	ldi	r25, 0x00	; 0
      7ba:	0e 94 a9 00 	call	0x152	; 0x152 <EEPROM_write>
-	EEPROM_write(8, (0));
+	EEPROM_write(8, (0));				//POSICION 2 EN MEMORIA
      7be:	60 e0       	ldi	r22, 0x00	; 0
      7c0:	88 e0       	ldi	r24, 0x08	; 8
      7c2:	90 e0       	ldi	r25, 0x00	; 0
      7c4:	0e 94 a9 00 	call	0x152	; 0x152 <EEPROM_write>
 	
-	EEPROM_write(11, (0));
+	EEPROM_write(11, (0));				//POSICION 3 EN MEMORIA
      7c8:	60 e0       	ldi	r22, 0x00	; 0
      7ca:	8b e0       	ldi	r24, 0x0B	; 11
      7cc:	90 e0       	ldi	r25, 0x00	; 0
      7ce:	0e 94 a9 00 	call	0x152	; 0x152 <EEPROM_write>
-	EEPROM_write(12, (0));
+	EEPROM_write(12, (0));				//POSICION 3 EN MEMORIA
      7d2:	60 e0       	ldi	r22, 0x00	; 0
      7d4:	8c e0       	ldi	r24, 0x0C	; 12
      7d6:	90 e0       	ldi	r25, 0x00	; 0
      7d8:	0e 94 a9 00 	call	0x152	; 0x152 <EEPROM_write>
-	EEPROM_write(13, (0));
+	EEPROM_write(13, (0));				//POSICION 3 EN MEMORIA
      7dc:	60 e0       	ldi	r22, 0x00	; 0
      7de:	8d e0       	ldi	r24, 0x0D	; 13
      7e0:	90 e0       	ldi	r25, 0x00	; 0
      7e2:	0e 94 a9 00 	call	0x152	; 0x152 <EEPROM_write>
-	EEPROM_write(14, (5));
+	EEPROM_write(14, (5));				//POSICION 3 EN MEMORIA
      7e6:	65 e0       	ldi	r22, 0x05	; 5
      7e8:	8e e0       	ldi	r24, 0x0E	; 14
      7ea:	90 e0       	ldi	r25, 0x00	; 0
@@ -1048,8 +1046,7 @@ int main(void)
      7f4:	10 92 2f 01 	sts	0x012F, r1	; 0x80012f <STATE>
 	sei();
      7f8:	78 94       	sei
-    while (1) {	
-		//STATE = STATE;	
+    while (1) {		
 		switch (STATE){
      7fa:	80 91 2f 01 	lds	r24, 0x012F	; 0x80012f <STATE>
      7fe:	81 30       	cpi	r24, 0x01	; 1
@@ -1060,26 +1057,26 @@ int main(void)
      808:	83 30       	cpi	r24, 0x03	; 3
      80a:	99 f0       	breq	.+38     	; 0x832 <__DATA_REGION_LENGTH__+0x32>
      80c:	17 c0       	rjmp	.+46     	; 0x83c <__DATA_REGION_LENGTH__+0x3c>
-			case 0: Manual(); NEXT_STATE = 1; break;
+			case 0: Manual(); NEXT_STATE = 1; break;		//MODO MANUAL
      80e:	0e 94 be 00 	call	0x17c	; 0x17c <Manual>
      812:	81 e0       	ldi	r24, 0x01	; 1
      814:	80 93 2e 01 	sts	0x012E, r24	; 0x80012e <NEXT_STATE>
      818:	f0 cf       	rjmp	.-32     	; 0x7fa <main+0xf4>
-			case 1: Cominucacion(); NEXT_STATE = 2; break;
+			case 1: Cominucacion(); NEXT_STATE = 2; break;	//MODO UART
      81a:	0e 94 da 02 	call	0x5b4	; 0x5b4 <Cominucacion>
      81e:	82 e0       	ldi	r24, 0x02	; 2
      820:	80 93 2e 01 	sts	0x012E, r24	; 0x80012e <NEXT_STATE>
      824:	ea cf       	rjmp	.-44     	; 0x7fa <main+0xf4>
-			case 2: Escritura(); NEXT_STATE = 3; break;
+			case 2: Escritura(); NEXT_STATE = 3; break;		//MODO ESCRITURA
      826:	0e 94 38 01 	call	0x270	; 0x270 <Escritura>
      82a:	83 e0       	ldi	r24, 0x03	; 3
      82c:	80 93 2e 01 	sts	0x012E, r24	; 0x80012e <NEXT_STATE>
      830:	e4 cf       	rjmp	.-56     	; 0x7fa <main+0xf4>
-			case 3: Lectura(); NEXT_STATE = 0; break;
+			case 3: Lectura(); NEXT_STATE = 0; break;		//MODO LECTURA
      832:	0e 94 b2 01 	call	0x364	; 0x364 <Lectura>
      836:	10 92 2e 01 	sts	0x012E, r1	; 0x80012e <NEXT_STATE>
      83a:	df cf       	rjmp	.-66     	; 0x7fa <main+0xf4>
-			default: STATE = 0; break;
+			default: STATE = 0; break;	
      83c:	10 92 2f 01 	sts	0x012F, r1	; 0x80012f <STATE>
      840:	dc cf       	rjmp	.-72     	; 0x7fa <main+0xf4>
 
@@ -1319,18 +1316,18 @@ ISR (INT0_vect){
      a02:	00 c0       	rjmp	.+0      	; 0xa04 <__vector_1+0x20>
      a04:	00 00       	nop
 	_delay_ms(200);
-	if (STATE == 1) {
+	if (STATE == 1) { //SI SE ESTA EN EL ESTADO COMUNICACION SERIAL CUANDO SE PRESIONA
      a06:	80 91 2f 01 	lds	r24, 0x012F	; 0x80012f <STATE>
      a0a:	81 30       	cpi	r24, 0x01	; 1
      a0c:	31 f4       	brne	.+12     	; 0xa1a <__vector_1+0x36>
-		flag = 1;
+		flag = 1;	  //ACTIVA LA BANDER PARA SALIR DEL WHILE QUE ESPERA UN DATO
      a0e:	81 e0       	ldi	r24, 0x01	; 1
      a10:	90 e0       	ldi	r25, 0x00	; 0
      a12:	90 93 01 01 	sts	0x0101, r25	; 0x800101 <__DATA_REGION_ORIGIN__+0x1>
      a16:	80 93 00 01 	sts	0x0100, r24	; 0x800100 <__DATA_REGION_ORIGIN__>
 	}
 	
-	STATE = NEXT_STATE;
+	STATE = NEXT_STATE; //EL ESTADO TOMA EL VALOR DEL ESTADO SIGUIENTE AL SER PRESIONADO
      a1a:	80 91 2e 01 	lds	r24, 0x012E	; 0x80012e <NEXT_STATE>
      a1e:	80 93 2f 01 	sts	0x012F, r24	; 0x80012f <STATE>
 }
@@ -1381,7 +1378,7 @@ ISR (INT1_vect){
      a6e:	85 b1       	in	r24, 0x05	; 5
      a70:	88 60       	ori	r24, 0x08	; 8
      a72:	85 b9       	out	0x05, r24	; 5
-		EEPROM_write(10, (V1));
+		EEPROM_write(10, (V1));	//SI SE ESTA EN EL ESTADO DE ESCRITURA CUANDO SE PRESIONA
      a74:	60 91 28 01 	lds	r22, 0x0128	; 0x800128 <V1>
      a78:	70 91 29 01 	lds	r23, 0x0129	; 0x800129 <V1+0x1>
      a7c:	80 91 2a 01 	lds	r24, 0x012A	; 0x80012a <V1+0x2>
@@ -1390,7 +1387,7 @@ ISR (INT1_vect){
      a88:	8a e0       	ldi	r24, 0x0A	; 10
      a8a:	90 e0       	ldi	r25, 0x00	; 0
      a8c:	0e 94 a9 00 	call	0x152	; 0x152 <EEPROM_write>
-		EEPROM_write(20, (V2));
+		EEPROM_write(20, (V2)); //GUARDA EN ESTAS DIRECCIONES LOS VOLTAJES QUE LEE EL ADC
      a90:	60 91 24 01 	lds	r22, 0x0124	; 0x800124 <V2>
      a94:	70 91 25 01 	lds	r23, 0x0125	; 0x800125 <V2+0x1>
      a98:	80 91 26 01 	lds	r24, 0x0126	; 0x800126 <V2+0x2>
@@ -1422,11 +1419,11 @@ ISR (INT1_vect){
      ae6:	87 7f       	andi	r24, 0xF7	; 247
      ae8:	85 b9       	out	0x05, r24	; 5
 	}
-	if (STATE == 3)	{
+	if (STATE == 3)	{			//SI SE ESTA EN EL ESTADO DE LECTRUA CUANDO SE PRESIONA
      aea:	80 91 2f 01 	lds	r24, 0x012F	; 0x80012f <STATE>
      aee:	83 30       	cpi	r24, 0x03	; 3
      af0:	21 f4       	brne	.+8      	; 0xafa <__vector_2+0xc8>
-		READ = NEXT_READ; 
+		READ = NEXT_READ;		//EL ESTADO DE MEMORIA TOMA EL VALOR SIGUIENTE EN MEMORIA
      af2:	80 91 2c 01 	lds	r24, 0x012C	; 0x80012c <NEXT_READ>
      af6:	80 93 2d 01 	sts	0x012D, r24	; 0x80012d <READ>
 	}
@@ -1452,7 +1449,7 @@ ISR (INT1_vect){
 00000b1c <__vector_18>:
 
 
-ISR (USART_RX_vect){
+ISR (USART_RX_vect){			//CADA VEZ QUE EL RX DETECTE UN VALOR, SE ACTIVA LA BANDERA
      b1c:	1f 92       	push	r1
      b1e:	0f 92       	push	r0
      b20:	0f b6       	in	r0, 0x3f	; 63
@@ -1460,7 +1457,7 @@ ISR (USART_RX_vect){
      b24:	11 24       	eor	r1, r1
      b26:	8f 93       	push	r24
      b28:	9f 93       	push	r25
-	flag = 1;
+	flag = 1;					//Y EL VALOR SE GUARDA TEMPORALMENTE EN BUFFERRX
      b2a:	81 e0       	ldi	r24, 0x01	; 1
      b2c:	90 e0       	ldi	r25, 0x00	; 0
      b2e:	90 93 01 01 	sts	0x0101, r25	; 0x800101 <__DATA_REGION_ORIGIN__+0x1>

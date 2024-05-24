@@ -794,22 +794,22 @@ END GROUP
  .debug_frame   0x0000027c       0xb0 PWM/PWM1.o
  .debug_frame   0x0000032c       0x60 UART/UART.o
 
-.debug_str      0x00000000      0x5dd
+.debug_str      0x00000000      0x634
  *(.debug_str)
  .debug_str     0x00000000      0x208 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega328p/avr5/crtatmega328p.o
  .debug_str     0x00000208      0x182 ADC/ADC.o
                                 0x1b6 (size before relaxing)
  .debug_str     0x0000038a       0x3d EEPROM/EEPROM.o
                                 0x1cc (size before relaxing)
- .debug_str     0x000003c7      0x173 main.o
-                                0x336 (size before relaxing)
- .debug_str     0x0000053a       0x1a PIN_INT/Ext_Int.o
+ .debug_str     0x000003c7      0x1ca main.o
+                                0x321 (size before relaxing)
+ .debug_str     0x00000591       0x1a PIN_INT/Ext_Int.o
                                 0x1be (size before relaxing)
- .debug_str     0x00000554       0x26 PWM/PWM0.o
+ .debug_str     0x000005ab       0x26 PWM/PWM0.o
                                 0x1e3 (size before relaxing)
- .debug_str     0x0000057a       0x2c PWM/PWM1.o
+ .debug_str     0x000005d1       0x2c PWM/PWM1.o
                                 0x209 (size before relaxing)
- .debug_str     0x000005a6       0x37 UART/UART.o
+ .debug_str     0x000005fd       0x37 UART/UART.o
                                 0x1ee (size before relaxing)
 
 .debug_loc      0x00000000      0x755
